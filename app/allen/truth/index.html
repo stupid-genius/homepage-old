@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Truth Table Generator</title>
+<style type="text/css">
+.pagetitle
+{
+	text-align: center;
+}
+caption
+{
+	text-align: left;
+	font-size: large;
+	font-weight: bold;
+}
+th
+{
+	padding: 1em;
+}
+tbody
+{
+	text-align: center;
+}
+#legend
+{
+	width: 200px;
+	float: left;
+	font-size: small;
+}
+#ECol2
+{
+	width: 25px;
+}
+#ENote
+{
+	text-align: left;
+	font-size: x-small;
+}
+#textfields
+{
+	width: 200px;
+	padding: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: black;
+}
+#input
+{
+	float: left;
+}
+#output
+{
+	float: center;
+}
+</style>
+<script type="text/javascript" src="../../scripts/jquery.js"></script>
+<script type="text/javascript" src="../../scripts/JStack.js"></script>
+<script type="text/javascript" src="../../scripts/JStringScanner.js"></script>
+<script type="text/javascript" src="../../scripts/JSBSTree.js"></script>
+<script type="text/javascript" src="../../scripts/JSTruthTable.js"></script>
+</head>
+<body>
+<div id="input">
+	<h1 class="pagetitle">Truth Table Generator</h1>
+	<p class="pagetitle">written by: Allen Ng</p>
+	<fieldset id="textfields">
+		<legend>Enter an expression:</legend>
+		<input id="expression" type="text" size="20" /><br />
+		<input type="button" value="Calculate" onclick="buildTable()" /><br /><br />
+		<table id="legend" border="1">
+			<caption>Legend</caption>
+			<colgroup></colgroup>
+			<colgroup id="ECol2"></colgroup>
+			<tr><th>Logical operand</th><th>Use</th></tr>
+			<tr><td>NOT (&not;)</td><td>!</td></tr>
+			<tr><td>AND (&and;)</td><td>&amp;</td></tr>
+			<tr><td>OR (&or;)</td><td>|</td></tr>
+			<tr><td>XOR (&oplus;)</td><td>^</td></tr>
+			<tr><td>implication (&rarr;)</td><td>?</td></tr>
+			<tr><td id="ENote" colspan="2">If you don't see standard logic symbols, you should install <a href="http://www.mozilla.org/projects/mathml/fonts/">the correct fonts</a></td></tr>
+		</table>
+	</fieldset>
+</div>
+<div id="output"></div>
+<script type="text/javascript">
+/*<![CDATA[*/
+var eInput = document.getElementById("input");
+var eOutput = document.getElementById("output");
+var eForm = document.getElementById("textfields");
+var eExpression = document.getElementById("expression");
+function buildTable()
+{
+	var sExp = eExpression.value;
+	if(sExp != "" && sExp )
+	{
+		var myTT = new JSTruthTable(sExp);
+		eOutput.innerHTML = myTT.getTruthTable();
+	}
+}
+/*]]>*/
+</script>
+</body>
+</html>

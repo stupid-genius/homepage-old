@@ -1,0 +1,22 @@
+5/06/06
+NetRisk version 1.9.1337
+
+INFO:
+homepage: www.phprisk.org
+sourceforge (original): www.sourceforge.net/projects/netrisk
+forum (best way to contact): www.phprisk.org/forums
+email:  webmaster@phprisk.org
+
+
+1) Upload the files to server
+2) Chmod 'includes/riskconfig.php' to 766
+3) Goto install.php in your browser and follow instructions.
+- - - You will to have a database already created before running the install script.
+4) Chmod 'includes/riskconfig.php' to 755.
+5) Delete 'install.php' and 'netrisk.sql'.
+
+
+10/26/06
+Somebody changed config.php to riskconfig.php. there may be renaming errors.
+applied gothmog & rcon's changes. (dice rolling is now a function)
+applied general bugfixes.

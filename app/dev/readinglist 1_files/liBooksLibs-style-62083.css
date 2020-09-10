@@ -1,0 +1,1046 @@
+
+table {
+   border-spacing:0px;
+}
+body {
+    font-family: 'lucida grande', tahoma, verdana, arial, sans-serif; 
+    font-size: 12px;
+}
+
+a {
+    color:#003399;
+    text-decoration:none;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight:normal;
+}
+
+h3 {
+    font-size: 13px;
+    margin-bottom:0px;
+    font-weight:bold;
+    padding-top:0px;
+}
+
+hr {
+    background-color: #CCCCCC;
+    border-color: #CCCCCC;
+    border-width: 0px;
+    border:0;
+    color: #CCCCCC;
+    height:1px;
+}
+
+.smallheader {
+    font-size:11px;
+    font-weight:bold;
+    margin-bottom:2px;
+}
+
+.small {
+    font-size:10px;
+}
+
+.productText {
+}
+
+.productTextWithImage {
+  margin-left:100px;
+  font-size:12px;
+}
+
+.productTextWithImageProfile {
+  margin-left:85px;
+  font-size:12px;
+}
+
+.productActions {
+  margin-top:4px;
+  margin-bottom:4px;
+}
+
+.productTitleText {
+  font-weight:bold;
+   font-size:14px;
+}
+
+.productImageBucket {
+   float:left;
+   width:90px;
+   text-align:left;
+}
+
+.productImageBucketProfile {
+   float:left;
+   width:75px;
+   text-align:left;
+}
+
+.commentContainer {
+   margin-top:8px;
+   font-size:12px;
+   word-wrap: break-word;
+}
+
+.productContainer {
+   font-family: verdana, arial, helvetica,sans-serif !important;
+   margin-bottom:10px;
+}
+
+
+.icon_degree {
+   margin-left:6px;
+   vertical-align:middle;
+}
+
+.profile_link {
+   margin-left:8px;
+}
+
+.hp_icon_degree{
+   margin-left:3px;
+   border:0px;
+   align:middle;
+}
+
+.thumbsupimg {
+    background: url(http://www.linkedin.com/img/icon/endorse/icon_endorse_1_35x24.gif) no-repeat scroll -18px 0px;
+    line-height:26px;
+    min-height:26px;
+    padding-left:22px;
+    font-weight:bold;
+    font-size:11px;
+    margin-top:4px;
+}
+
+.readingStatus {
+   font-size:11px;
+}
+
+.nav-follow a {
+    -moz-border-radius-bottomleft:4px;
+    -moz-border-radius-bottomright:4px;
+    -moz-border-radius-topleft:4px;
+    -moz-border-radius-topright:4px;
+    background:#F3DECA url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_action_primary.gif) repeat-x scroll 100% 0pt;
+    border:1px solid #DDB345;
+    color:black !important;
+    display:inline;
+    margin: 0 0 0 0;
+    height:11px;
+    font-size:11px;
+    text-align:center;
+    text-decoration:none;
+    padding:3px 8px !important;
+}
+
+.nav-unfollow a {
+    -moz-border-radius-bottomleft:4px;
+    -moz-border-radius-bottomright:4px;
+    -moz-border-radius-topleft:4px;
+    -moz-border-radius-topright:4px;
+    background:#F3DECA url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_action_inactive.gif) repeat-x scroll 100% 0pt;
+    border:1px solid #CCCCCC;
+    color:black !important;
+    display:inline;
+    margin: 0 0 0 0;
+    height:11px;
+    font-size:11px;
+    text-align:center;
+    text-decoration:none;
+    padding:3px 8px !important;
+}
+
+
+
+.nav-action {
+   text-align:center;
+}
+
+.nav-action a {
+    background:#F3DECA repeat-x scroll 0pt 0pt;
+    border:1px solid #DDB345;
+    color:black !important;
+    display:inline;
+    padding: 1px 8px;
+    font-size:100%;
+    line-height:.8;
+    font-size:14px;
+    text-align:center;
+    text-decoration:none;
+}
+
+.searchbox {
+    border: 2px solid #99CCE6;
+    font-size:130%;
+    padding:3px 5px 2px;
+    line-height:1
+}
+
+.searchbutton {
+    background:#3399CC url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_btn_500x52.gif) no-repeat scroll left top;
+    border:1px solid #006699;
+    color:#FFFFFF;
+    font-size:120%;
+    font-weight:bold;
+    padding:3px 5px 2px;
+    vertical-align:top
+}
+
+.disabled {
+     color:gray;
+}
+
+
+fieldset {
+   border-style:none;
+}
+
+.canvasPagination {
+   width:100%;
+   font-size:12px;
+}
+
+.canvasPaginationPrev {
+   width:33%;
+   text-align:left;
+   padding-left:10px;
+}
+
+.canvasPaginationCenter {
+   text-align:center;
+}
+
+.canvasPaginationNext {
+   width:33%;
+   text-align:right;
+   padding-right:10px;
+}
+
+.canvasContainer {
+   padding:8px;
+   width:530px; 
+   float:left;
+}
+
+.staticContainer {
+   padding:8px;
+}
+
+.canvasRepeater {
+    padding: 6px;
+    margin: 0px 0px;
+    
+    zoom:1;
+}
+
+.empty-repeater {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.dashBottom {
+    margin-bottom:3px;
+    background: transparent url(http://www.linkedin.com/img/bg/bg_grey_dotted_h-line_3x1.gif) repeat-x scroll 0 100%;
+}
+
+.canvasTitle {
+   font-family arial,sans-serif;
+   font-size: 1.5em;
+   font-weight:bold;
+}
+
+.canvasIntro {
+   font-family arial,sans-serif;
+   font-size: 1.25em;
+   font-weight: bold;
+   margin-bottom:2px;
+}
+
+.canvasImage {
+   float:left;
+   margin-right:4px;
+}
+
+.clear {
+   clear:both;
+}
+
+.userAction {
+   font-size:11px;
+}
+.userName {
+  font-size:12px;
+  font-weight:bold;
+}
+
+.userImagePadding {
+   margin-left:90px;
+}
+
+.userAbout {
+   font-size:11px;
+}
+
+.userImage {
+   float:left;
+   margin-right:4px;
+}
+
+.userSeeReadingList {
+   font-size:10px;
+}
+
+
+.homepage_view .module_title{
+    font-size: 20px;
+    font-weight:normal;       
+    padding-bottom:2px;
+}
+
+
+.homepage_view a {
+    text-decoration:none;
+}
+
+.homepage_view .block_title{
+   font-size: 13px;
+   color: #000000;
+   font-weight: bold;
+   padding:2px;
+   padding-top:4px; 
+}
+
+.homepage_view .teaser{
+   font-size: 12px;
+   padding:2px;
+   padding-left:16px;
+}
+
+.homepage_view .userName {
+    text-decoration:none;
+    font-size:13px;
+    color: #006699;
+}
+
+.homepage_view .bookName{
+   color: #003399;
+   font-decoration:
+}
+
+.homepage_view .seeAll{
+   color: #FF00FF;
+   text-align:right;
+   font-size: 10px;
+}
+
+.homepage_view a:hover {
+  text-decoration: underline;
+}
+
+.homepage_view .searchArea {
+  padding-top: 5px;
+  padding-bottom: 10px;
+}
+
+.homepage_view .searchbox {
+    border: 2px solid #99CCE6;
+    font-size:120%;
+    padding:3px 5px 2px;
+    line-height:1;
+}
+
+.homepage_view .searchbutton {
+    background:#3399CC url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_btn_500x52.gif) no-repeat scroll left top;
+    border:1px solid #006699;
+    color:#FFFFFF;
+    font-size:100%;
+    font-weight:bold;
+    margin-top: 1px;
+    padding:3px 5px 2px 8px;
+}
+
+
+#static-nav ul {
+    list-style-type:none;
+    margin:0px;
+    border-width: 0 1px 1px;
+    margin:0 0 9px;
+    padding:7px 0;
+    list-style-image:none;
+    list-style-position:outside;
+}
+
+#static-nav ul li {
+    margin: 0px;
+    padding: 0px;
+    display:inline;
+}                                                                                                                                                                                                                
+#static-nav ul li a {
+    color: #006699 !important;
+    display:block;
+    padding: 6px 19px 5px 40px;
+    text-decoration:none;
+    font-weight: bold;
+    outline: none;
+}
+
+#static-nav ul li a:hover {
+    text-decoration: underline;
+}
+
+#static-nav-home a {
+    background: transparent url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/li_nav_sprites.gif) no-repeat scroll 9px -30px;
+}
+
+#static-nav-book a {
+    background: transparent url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/li_nav_sprites.gif) no-repeat scroll 9px -65px;
+}
+
+#static-nav-group a {
+    background: transparent url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/li_nav_sprites.gif) no-repeat scroll 9px -100px;}
+
+#static-nav-crowd a {
+    background: transparent url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/li_nav_sprites.gif) no-repeat scroll 9px -254px;
+}
+
+.nav-ps-select {
+   text-align:center;
+   vertical-align:top; 
+}
+
+.nav-ps-select a {
+    -moz-border-radius-bottomleft:4px;
+    -moz-border-radius-bottomright:4px;
+    -moz-border-radius-topleft:4px;
+    -moz-border-radius-topright:4px;
+    background:#F3DECA url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_action_primary.gif) repeat-x scroll 100% 0pt;
+    border:1px solid #DDB345;
+    color:black !important;
+    display:inline;
+    margin: 0 10px 0 0;
+    line-height:2;
+    font-size:11px;
+    text-align:center;
+    text-decoration:none;
+    padding:3px 20px !important;
+
+}
+
+#title-image {
+   margin-bottom:10px;
+   height:27px;
+   background: url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/reading-list-logo.gif) no-repeat scroll 0pt 0pt;
+}
+
+#section-header, #page-title {
+    color:white;
+    background:#006699 url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_section_header_1x9.gif) repeat-x scroll 0 100%;
+    margin-bottom:2px;
+    overflow:hidden;
+    padding:10px 15px 0;
+    position:relative;
+    width:100%;
+}
+
+ul#nav-secondary {
+   float:left;
+   list-style-type:none;
+   margin: 0;
+   overflow:hidden;
+   padding: 0;
+}
+
+#nav-secondary li {
+    float:left;
+    font-size: 100%;
+    margin: 0 5px 0 0;
+    padding: 0;
+}
+
+#nav-secondary li a span {
+    background:transparent url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/pic_tab_left_4x4.gif) no-repeat scroll 0 0;
+    padding:5.2px 0 3px 8px;
+}
+
+#nav-secondary li a, #nav-secondary li a:visited {
+    background:#E6E6E6 url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/pic_tab_right_4x4.gif) no-repeat scroll 100% 0;
+    display:block;
+    float:left;
+    padding:5px 8px 3px 0;
+    text-decoration:none;
+    color: #069;
+}
+
+.tab-selected a span {
+   background:transparent url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/pic_tab_left_4x4.gif) no-repeat scroll 0 0;
+   color:black;
+}
+
+.tab-selected a, .tab-selected a:visited {
+    background:#FFFFFF url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/pic_tab_right_4x4.gif) no-repeat scroll 100% 0 !important;
+}
+
+.nav-ps-search {
+    background:#3399CC url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_btn_500x52.gif) no-repeat scroll left top;
+    border: 1px solid #006699;
+    margin-top:-5px;
+    padding:4px;
+    font-size:95%;
+    color:white;
+    cursor:pointer;
+}
+
+.ps_shoveler_loading {
+    background:white;
+    width:530px;
+    display:block;
+}
+
+.ps_shoveler_left_button {
+    background:transparent url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/pic_tip_ctrl_57x60.gif) no-repeat scroll 0 0;
+    width:29px;
+    height:20px;
+    float:left;
+    cursor:pointer;
+}
+
+.ps_shoveler_left_button_hover {
+    background:transparent url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/pic_tip_ctrl_57x60.gif) no-repeat scroll -29px 0;
+    width:29px;
+    height:20px;
+    float:left;
+    background-position: 0 -40px;
+    cursor:pointer;
+}
+
+
+.ps_shoveler_right_button_hover {
+    background:transparent url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/pic_tip_ctrl_57x60.gif) no-repeat scroll -29px 0;
+    width:29px;
+    height:20px;
+    float:left;
+    background-position: -29px -40px;
+    cursor:pointer;
+}
+
+.ps_shoveler_right_button {
+    background:transparent url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/pic_tip_ctrl_57x60.gif) no-repeat scroll -29px 0;
+    width:29px;
+    height:20px;
+    float:left;
+    cursor pointer;
+}
+
+.ps_shoveler_right_button_disabled {
+    background:transparent url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/pic_tip_ctrl_57x60.gif) no-repeat scroll -29px 0;
+    width:29px;
+    height:20px;
+    float:left;
+    background-position: -29px -80px;
+}
+
+.ps_shoveler_left_button_disabled {
+    background:transparent url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/pic_tip_ctrl_57x60.gif) no-repeat scroll -29px 0;
+    width:29px;
+    height:20px;
+    float:left;
+    background-position: 0px -80px;
+}
+
+
+.ps_shoveler_header, .ps_shoveler_header td {
+    font-size: 12px;
+}
+
+.ps_shoveler_header {
+    padding-bottom: 20px;
+}
+
+.ps_shoveler_title_author {
+    font-size: 11px;
+}
+
+.psearchform {
+   margin-top:0px;
+   margin-bottom:10px;
+}
+
+.psearch_box {
+    width:440px;
+    margin-bottom:-2px;
+}
+
+.psearch_initial_state_label_text {
+    padding-bottom: 10px;
+}
+
+.psearch_result_state_label_text {
+    display: inline;
+    padding-right: 15px;
+    font-weight: bold;
+}
+
+.psearch_field {
+    display: inline;
+}
+
+
+.ps_shoveler {
+
+}
+
+.ps_shoveler_table {
+   padding:0px;
+}
+
+
+.ps_shoveler_product {
+    margin-left:2px;
+    padding: 0px 3px 0px 3px;
+}
+
+.ps_shoveler_product_image_block {
+   height:100px;
+   vertical-align:middle;
+   text-align:center;
+   width:100px;
+   display:table-cell;
+}
+
+.update_status {
+    background-color: #ECD1CE;
+    color:black;
+    font-weight:bold;
+    font-size: 12px;
+    padding:5px;
+    margin-bottom:8px;
+
+}
+
+.ps_shoveler_table {
+    padding-top:5px;
+    background:white;
+}
+
+.ps_shoveler_buttons {
+    margin-top:75px;
+}
+.searchBox-540 {
+   width:540px;
+   background: #DDF0F8 url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_trans_bot_540x7.gif) no-repeat scroll 0 100%;
+}
+
+.searchBox-540 h2 {
+    background: #BADDEE url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_trans_top_540x7.gif) no-repeat scroll 0 0;
+    color:#006699;
+    padding: 10px;
+    position:relative;
+    margin-bottom:2px;
+    font-size: 1.5em;
+}
+
+
+.navbox-220 {
+   background: #E6E6E6 url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_trans_bot_220x7.gif) no-repeat scroll 0 100%;
+   width:220px;
+   position:relative;
+   margin-bottom:0px;
+}
+
+.navbox-220-in {
+   background: transparent url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_trans_top_220x7.gif) no-repeat scroll 0 0%;
+   padding: 5px;
+   width:215px;
+}
+
+.navbox-220-content {
+   background: #FFFFFF url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_navbox_bot_212x7.gif) no-repeat scroll 0 100%;
+   width:210px;
+}
+
+.navbox-220-content-in {
+   background: transparent url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_navbox_top_212x7.gif) no-repeat scroll 0 0%;
+   padding: 10px;
+   font-size:11px;
+}
+
+.navbox-220-header {
+  font-weight:bold;
+  font-size:12px;
+  margin:5px 8px;
+}
+
+.right-side-bar {
+   margin-left:555px;
+}
+
+.error {
+   border-color:#E6E6E6;
+   border-style:solid;
+   color: #888888;
+   border-width:1px;
+   margin-bottom:5px;
+   padding-left: 5px;
+}
+
+.share-form-row {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.action-picker {
+    font-size: 11px;
+    margin-left: -4px;
+}
+
+.action-picker input {
+    margin-left: 0px;
+}
+
+.action-picker label {
+    margin-right: 15px;
+}
+
+.share-form-fields {
+    margin-left: 10px;
+    padding-bottom: 10px;
+}
+
+.share-kindle-flag {
+  font-size: 11px;
+  margin-left: -4px;
+  padding-top: 2px;
+  padding-bottom: 9px;
+}
+
+.share-buttons-message-row {
+    height: 25px;
+    width: 100%;
+}
+
+.share-submit-buttons {
+    height: 20px;
+    display: inline;
+    float: left;
+}
+
+.share-message {
+    display: inline;
+    padding-top: 5px;
+    color: red;
+    font-size: 11px;
+    float: left;
+    width: 300px;
+}
+
+.share-message-pending {
+    color: #000000;
+}
+
+.share-limit-text {
+    font-size: 11px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.share-save-button {
+    display: inline;
+}
+
+.share-save-button a {
+    -moz-border-radius-bottomleft:4px;
+    -moz-border-radius-bottomright:4px;
+    -moz-border-radius-topleft:4px;
+    -moz-border-radius-topright:4px;
+    background:#F3DECA url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_action_primary.gif) repeat-x scroll 100% 0pt;
+    border:1px solid #DDB345;
+    color:black !important;
+    display:inline;
+    margin: 0 10px 0 0;
+    line-height:.8;
+    font-size:11px;
+    text-align:center;
+    text-decoration:none;
+    padding:6px 10px !important;
+    width: 60px;
+    float: left;
+}
+
+.share-save-button a.inactive {
+    background:#F3DECA url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_action_inactive.gif) repeat-x scroll 100% 0pt;
+    border:1px solid #CCCCCC;
+}
+
+ul.control {
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    cursor:default;
+    float: right;
+    padding: 0px;
+    margin:0px;
+    vertical-align:middle;
+    font-size:11px;
+    height:25px;
+}
+
+li.edit {
+    clear: none;
+    float:left;
+    line-height:19px;
+}
+
+.edit a {
+   border-right: 1px solid black;
+   margin-right: 7px;
+   padding-right: 7px;
+   cursor:pointer;
+}
+
+
+li.remove {
+    clear: none;
+    float:left;
+    line-height:19px;
+}
+
+.remove a {
+    background:none;
+    float:left;
+    cursor:pointer;
+}
+
+.canvasTitleContainer {
+   margin-bottom:5px;
+}
+
+.comment_dim {
+   color:#AAAAAA;
+   font-family:verdana,arial,helvetica,sans-serif !important;
+   font-size:12px;
+   width:505px;
+   overflow:auto;
+}
+
+.comment_edit {
+   color:auto;
+   font-family:verdana,arial,helvetica,sans-serif !important;
+   font-size:12px;
+   overflow:auto;
+   width:505px;
+}
+
+.hoverlink a {
+    color:black;
+}
+
+.hoverlink a:hover {
+    color:black;
+    text-decoration:underline;
+}
+
+.hoverlink a:visited {
+   color:black;   
+}
+
+.indentsecond {
+    margin-left:10px;
+    text-indent:-10px;
+}
+
+.no_bullet_list {
+    list-style-type:none;
+    padding-left:4px;
+    margin-left:4px;
+}
+
+.book-detail-reviews {
+    font-size: 11px;
+}
+
+.book-detail-stars img{
+    margin-bottom: -2px;
+}
+
+.book-detail-container {
+    padding-top: 8px;
+}
+
+.book-detail {
+    font-size: 12px;
+}
+
+.book-detail-prices {
+    font-size: 12px;
+    border: 0px;
+    margin: 0px;
+}
+
+.book-detail-prices-label {
+    color: #666666;
+    padding-right: 6px;
+    text-align: right;
+}
+
+.book-detail-actual-price {
+    color: #990000;
+    font-size: 13px;
+}
+
+.book-detail-upper {
+    padding-bottom: 2px;
+    border-bottom: 1px dashed #999999;
+}
+
+.book-detail-lower {
+    padding-top: 8px;
+}
+
+.book-detail-add-book-button {
+    margin-top:15px;
+    cursor:pointer;
+}
+
+.book-detail-add-book-button a {
+    -moz-border-radius-bottomleft:4px;
+    -moz-border-radius-bottomright:4px;
+    -moz-border-radius-topleft:4px;
+    -moz-border-radius-topright:4px;
+    background:#F3DECA url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_action_primary.gif) repeat-x scroll 100% 0pt;
+    border:1px solid #DDB345;
+    color:black !important;
+    display:inline;
+    margin: 0 0 0 0;
+    height:11px;
+    font-size:11px;
+    text-align:center;
+    text-decoration:none;
+    padding:3px 8px !important;
+}
+
+.book-detail-image {
+   float:left;
+   margin-right:4px;
+   
+   min-height: 225px;
+}
+
+.profile-logo {
+  margin-left: -6px;
+}
+
+.profile-follow-teaser {
+  padding: 10px 0;
+}
+
+.profile-see-all {
+  font-weight: bold;
+  text-align: right;
+}
+
+.profile-actions {
+  background: transparent url(http://www.linkedin.com/img/bg/bg_grey_dotted_h-line_3x1.gif) repeat-x scroll 0 0;
+  float: left;
+  margin-top: 6px;
+  padding-top: 12px;
+  position: relative;
+  width: 100%;
+}
+
+.profile-actions ul {
+  clear: left;
+  float: left;
+  left: 50%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  text-align: center;
+}
+
+.profile-actions ul li {
+  display: block;
+  float: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  right: 50%;
+}
+
+.profile-empty-follow {
+  margin: 12px 0 18px 0;
+}
+
+.update-list a {
+    -moz-border-radius-bottomleft:4px;
+    -moz-border-radius-bottomright:4px;
+    -moz-border-radius-topleft:4px;
+    -moz-border-radius-topright:4px;
+    background:#F3DECA url(http://g-ecx.images-amazon.com/images/G/01/x-locale/communities/social/books/bg_action_primary.gif) repeat-x scroll 100% 0pt;
+    border:1px solid #DDB345;
+    color:black !important;
+    display:inline;
+    margin: 0 0 0 0;
+    height:11px;
+    font-size:11px;
+    text-align:center;
+    text-decoration:none;
+    padding:3px 8px !important;
+}
+
+
+
+.sn-book-search-text {
+    padding-bottom: 10px;
+}
+
+.sn-book-search-box {
+    width:140px;
+    margin-bottom:-2px;
+}
+
+.sn-book-search-field {
+    display: inline;
+}
+
+.kindleLearnMore {
+    white-space:nowrap;
+    font-size:10px;
+}
+
+.error-box {
+    border: 1px solid #006699;
+    padding:20px;
+    color: #990000;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.time-delimiter {
+    padding-top:4px;
+    padding-bottom:4px;
+}
+.time-delimiter span {
+    border-bottom:1px solid #CCCCCC;
+    margin-left:6px;
+    color: #666666;
+    font-weight:bold;
+    font-size:11px;
+    padding-bottom:1px;
+    margin-top:2px;
+}
+
+.lastUpdatedtime {
+    font-size:11px;
+    font-weight:normal;
+    color:#666666;
+    line-height:12px;
+}
+
+.zoom1 {
+    zoom:1;
+}

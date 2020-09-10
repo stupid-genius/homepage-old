@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Coming Soon!</title>
+<style>
+body
+{
+	background-color: black;
+	color: #10FF10;
+	font-family: courier;
+	font-size: 30px;
+	text-align: justify;
+	overflow: hidden;
+}
+#EMessage
+{
+	width: 66%;
+}
+</style>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("#EMessage").offset({top:($(window).height()-$("#EMessage").height())/2,left:($(window).width()-$("#EMessage").width())/2});
+});
+</script>
+</head>
+<body>
+	<p id="EMessage">In 2005, I registered stupid-genius.com as a place to share my various creations with people.  While many projects have been hosted here over the years, the main page has said "Coming Soon" for 7 years.<br /><br />Today, that is not going to change.<br /><br />But I am working on my first public project and if all goes according to plan, it will appear on this site Summer 2013.<br /><br />Stay tuned--it's coming soon.</p>
+</body>
+</html>

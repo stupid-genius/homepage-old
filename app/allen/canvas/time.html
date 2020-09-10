@@ -1,0 +1,294 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>animation test</title>
+<style>
+body
+{
+	background-color: black;
+	color: black;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+div
+{
+	font-size: 50%;
+}
+#ETitle
+{
+	font-family: courier;
+	font-size: 200%;
+	font-weight: bold;
+}
+#EMain
+{
+	margin: 0;
+	padding: 0;
+}
+#EEffects
+{
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+</style>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="jsTable.js"></script>
+<script type="text/javascript" src="jsNgCore.js"></script>
+<script type="text/javascript" src="jsCanvasFilter.js"></script>
+<script type="text/javascript">
+var rhl = ["h","i","j","k","l","m","n","o","p","u","y"];
+var main;
+var filter;
+var console;
+var t;
+var l;
+var w;
+
+var xCanvasCenter,
+	yCanvasCenter,
+	canvasWidth,
+	canvasHeight;
+
+var events = new Array();
+var lastTick = new Date().getTime();
+var globalTime = 0;
+
+function pump()
+{
+	var ticks = new Date().getTime();
+	var timeDelta = ticks-lastTick;
+	lastTick = ticks;
+	globalTime += timeDelta;
+
+	if(events.length==0)
+	{
+		clearInterval(t);
+	}
+	if(globalTime>=events[events.length-1][0])
+	{
+		var curEvent = events.pop();
+		switch(curEvent[1])
+		{
+		case 1:
+			console.setCursor(curEvent[2]);
+			break;
+		case 2:
+			console.addText(curEvent[2]);
+			break;
+		case 3:
+			l = window.setInterval(eventLight, 1);
+			break;
+		case 4:
+			w = window.setInvterval(eventWarp, 1);
+			break;
+		}
+	}
+	main.fillF(0,0,0,0);
+	main.refresh();
+	console.refresh(50, 200);
+}
+function jsTyper(canvas)
+{
+	var context = canvas.getContext("2d");
+	var text = "";
+	var curPos = 0;
+	var lastTick = new Date().getTime();
+	var cursorInterval = 500;
+	var cursorTimer = 0;
+	var showCursor = true;
+
+	this.setFont = function(sProp, c)
+	{
+		context.font = sProp;
+		context.fillStyle = "#"+c[0].toString(16)+c[1].toString(16)+c[2].toString(16);
+	}
+	this.setCursor = function(offset)
+	{
+		curPos += offset;
+		if(curPos<0) curPos = 0;
+		if(curPos>=text.length) curPos = text.length-1;
+		if(offset==0)
+			showCursor = false;
+		else
+			showCursor = true;
+	}
+	this.addText = function(s)
+	{
+		var temp = text.substring(0,curPos)+s+text.substring(curPos,text.length);
+		text = temp;
+		curPos++;
+		showCursor = true;
+	}
+	this.refresh = function(x, y)
+	{
+		var ticks = new Date().getTime();
+		cursorTimer += ticks-lastTick;
+		lastTick = ticks;
+		if(cursorTimer>=cursorInterval)
+		{
+			cursorTimer = 0;
+			showCursor = !showCursor;
+		}
+		if(showCursor)
+		{
+			var cursorOffset = context.measureText(text.substring(0,curPos)).width;
+			context.fillText("|", x+cursorOffset-context.measureText(text.charAt(curPos)).width/2, y);
+		}
+		context.fillText(text, x, y);
+	}
+}
+function eventLight()
+{
+	filter.createLightBloom(300, 175, 150, [255,255,255,255]);
+}
+function eventWarp()
+{
+	main.createWarp(100, 100);
+	main.applyLens(150, 175);
+}
+$(document).ready(function()
+{
+	var lineFile = new JSLineFile("script");
+	while(lineFile.hasNext())
+	{
+		var line = lineFile.nextLine().split(/,/);
+		events.push([parseInt(line[0],10),parseInt(line[1],10), isNaN(line[2])|line[2]==" "?line[2]:parseInt(line[2])]);
+	}
+	events.reverse();
+
+	filter = new jsCanvasFilter($("#EEffects")[0]);
+	main = new jsCanvasFilter($("#EMain")[0]);
+	console = new jsTyper($("#EMain")[0]);
+	console.setFont("bold 40px courier", [64, 255, 64]);
+	//main.fill(0,0,0,255);
+	//main.fillF(0,0,0,255);
+	//main.refresh();
+
+	wWidth = $(window).width();
+	wHeight = $(window).height();
+	canvasWidth = main.backBuffer.width;
+	canvasHeight = main.backBuffer.height;
+	xCanvasCenter = canvasWidth/2;
+	yCanvasCenter = canvasHeight/2;
+	$("#EMain").offset({top:(wHeight-canvasHeight)/2,left:(wWidth-canvasWidth)/2});
+	$("#EEffects").offset({top:(wHeight-canvasHeight)/2,left:(wWidth-canvasWidth)/2});
+	//filter.fillF(0,0,0,255);
+	//filter.refresh();
+
+	t = window.setInterval(pump, 1);
+/*
+	$("#EEffects").hide();
+	
+	//$("#ETitle").offset({top:(wHeight)/2,left:(wWidth)/2});
+	main.createLens(lensWidth, lensDepth);
+	//main.creatEEffects(lensWidth, lensDepth);
+	filter.setFont("bold 80px courier", [64, 255, 32]);
+	//filter.fill(0,0,0,255);
+	var iPixelCount = canvasWidth*canvasHeight;
+	for(var i=0;i<iPixelCount;++i)
+	{
+		var x = i%canvasWidth;
+		var y = Math.floor(i/canvasWidth);
+		var c = checkerBoard(i, 10, 255);
+		filter.setPixel(x, y, c[0], c[1], c[2], c[3]);
+		filter.setPixelF(x, y, c[0], c[1], c[2], c[3]);
+	}
+	filter.refresh();
+	filter.print("Hello, Canvas!", 10, 120);
+	filter.print("Hello, World!", 10, 360);
+	main.linkCanvas($("#EEffects")[0]);
+	main.sync(true);*/
+	//t = window.setInterval(frame, 17);
+	//$("#EMain").mousedown(frame);
+	//frame();
+
+	/*lensTest = main.getLensTest();
+	output = new jsTable();
+	var row = new Array();
+	for(var i in lensTest)
+	{
+		//row.push(i);
+		//row.push(lensTest[i]==0?0:1);
+		row.push(lensTest[i]);
+		if(i%lensWidth==lensWidth-1)
+		{
+			output.add(row);
+			row = new Array();
+		}
+	}
+	output.add(row);
+	output.setDelim(output.jstdHTML);
+	$("#output").html(output.toString());*/
+});
+
+var xVel = 2,
+	yVel = 2;
+function frame()
+{
+	main.syncF(true);
+	main.applyLens(xLens, yLens);
+	//main.applyLens((canvasWidth/2-lensWidth), (canvasHeight-lensWidth)/2);
+	//main.updateLens();
+	main.setPixelF(xCanvasCenter,yCanvasCenter,255,0,0,255);
+	main.refresh();
+	//main.update();
+
+	xLens += xVel;
+	yLens += yVel;
+	if(xLens<0)
+	{
+		xLens = 0;
+		xVel *= -1;
+	}
+	if(xLens+lensWidth>=canvasWidth)
+	{
+		xLens = canvasWidth-lensWidth-1;
+		xVel *= -1;
+	}
+	if(yLens<0)
+	{
+		yLens = 0;
+		yVel *= -1;
+	}
+	if(yLens+lensWidth>=canvasHeight)
+	{
+		yLens = canvasHeight-lensWidth-1;
+		yVel *= -1;
+	}
+}
+function checkerBoard(i, s, c)
+{
+	var x = i%canvasWidth;
+	var y = Math.floor(i/canvasWidth);
+	var f1, f2, rc;
+
+	if(Math.floor(x/s)%2==0)
+		f1 = false;
+	else
+		f1 = true;
+	if(Math.floor(y/s)%2==0)
+		f2 = f1;
+	else
+		f2 = !f1;
+
+	//rc = f2*c;
+	if(f2)
+		rc = c;
+	else
+		rc = 0;//Math.round(c/2);
+	return [rc, rc, rc, 255];
+}
+</script>
+</head>
+<body>
+<div id="ETitle">Test</div>
+<canvas id="EMain" width="640" height="480"></canvas>
+<canvas id="EEffects" width="640" height="480"></canvas>
+<div id="output"></div>
+</body>
+</html>

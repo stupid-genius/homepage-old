@@ -1,0 +1,737 @@
+/*Entire page */
+html, body { min-height:100%; }
+
+/***********
+COLORS!
+---------------
+Green = #36502b
+darkgreen #192614
+darkbrown = #3a3026
+tan = #997f4c
+*/
+	body {background-color:#36502b;color:white;}
+	#index_content {background-color:#3a3026;color:white;}
+	#game_browser {background-color: #111F1F;color:white;}
+	#content table a, #nav a { color:white; }
+	#login a {color: black;}   
+	
+/*HEADER & FOOTER*/
+body {
+  margin:0; padding:0;
+  /*font:11pt/1.5 serif;*/
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#header {
+  margin:0; padding:0;
+  clear:both;
+  float:left;;
+}
+#footer {
+  height:1.5em;
+  border-top: 2px solid black;
+  clear:both;
+  margin:0px;
+  background-color: #192614; 
+}
+
+
+/***********************************
+NEW 3 COLUMN
+*************************************/
+/*BORDERS WILL BE COMPLICATED. CHECK FREQUENTLY, AND WITH
+VARIOUS PAGES, WHILE UPDATING.column widths and heighs
+will be directly affected*/
+
+/*CONTAINER OF COLUMNS*/
+#index_container { 
+  padding-left:200px; /*LC WIDTH*/
+  padding-right:240px;/*RC WIDTH*/
+  height:1%;/*iE HEIGHT*/
+}
+body > #index_container { 
+  height:auto;/*competent browser height*/
+ }
+
+
+/*CENTER COLUMN*/
+#index_content { 
+  width:100%;
+  overflow:auto;
+  border-top:2px solid black;
+  height:498px;/*-2 for border*/
+}
+/*CC margin/padding*/
+#index_content .column-in { 
+  margin:0; 
+  padding:5px;
+}
+
+/*LEFT COLUMN*/
+#index_image { 
+  width:198px;/*LC width*//*-2PX for Border*/
+  /*right:200px;*//*LC width*/
+  margin-left:-100%;
+  background:url("../images/browser_bg.jpg") bottom right no-repeat;
+  height:500px;
+  border-right:2px solid black;
+  left:200px;/*IE6, RC width*/
+
+}
+/*competent browsers*/
+#index_container > #index_image {
+  left:-200px;/*negative LC fullwidth*/ 
+}
+/*LC padding/margin*/
+#index_image .column-in { 
+
+}
+
+/*RIGHT COLUMN*/
+
+#index_info { 
+  width:238px;/*-2px for border*/
+  margin-right:-240px;
+  background:#997f4c;
+  height:499px;/*-1px for border*/
+  border-top: 1px solid black;
+  border-left:2px solid black;
+}
+
+/*RC padding/margin*/
+#index_info .column-in { 
+  margin:0; padding:0.5em 1em;
+}
+
+/*ALL COLUMNS*/
+#index_image,#index_info,#index_content { 
+  position:relative;
+  float:left;
+}
+
+
+
+
+
+/************************************
+3-Column Layout BEGIN
+*************************************/	
+/*
+
+	#left {
+		height:500px;
+		float:left;clear:left;
+		width:200px;
+		margin:0; padding:0;
+		background:url("../images/browser_bg.jpg") bottom right no-repeat;
+		}
+	#right {
+		height:499px;
+		float:right;clear:right;
+		width:200px;
+		margin:0; padding:0;
+		background:#997f4c;
+		border-top: 1px solid black;
+		}
+        #content {
+	    height:486px;
+		width: auto;
+		padding:5px;
+		margin:0px;
+		overflow: auto;
+		border: 2px solid black;
+		}
+	*/	
+	.cleaner {
+		clear:both;
+		height:1px;
+		font-size:1px;
+		border:none;
+		margin:0; padding:0;
+		background:transparent;
+		}
+
+	h1,h2,h3,h4 { margin: 0.2em 0 }
+	p { margin: 0.5em 0 }
+	a { color:white }
+	
+	.copy { text-align:center; font-size:80% }
+
+
+/**************************************
+ LOGO, VERSION NUMBER, AND NAVIGATION
+************************************* */
+#logo {
+		position:relative;
+		top: 20px;
+	margin:0 0 0 20px;
+		padding: 5px 10px 5px 10px;
+		float:left;clear:left;
+		width:210px;
+		height:36px;
+		font-size:smaller;
+	}
+    #version { float:right; position: relative; top: -33px; 
+    		font-family:sans-serif;font-weight:600;font-size:12px;}
+
+
+    #nav {
+	    height: 1.4em;
+            width:100%;
+	    text-align:center;  
+	    clear:both;
+	    font-family: Georgia, "Times New Roman", Times, serif;
+	    margin:0 auto 5px auto;
+	}
+	
+	 #nav a {
+		margin: -3px;
+		padding: 1px 7px 1px 7px;
+		color: white;
+		text-align: right;
+		font-weight: 600;
+		font-family: Georgia, "Times New Roman", Times, serif;
+		font-size:0.9em;
+		text-decoration: none;
+		border:2px solid black;
+		background-color: #192614;
+	}
+	
+	#nav a:hover { background-color:#191510;}
+	#nav a:active { background-color: #192614;}
+
+/********************
+css for the game browser
+***********************/
+	/*general font and colors for game browser. also sets table dimensions*/
+	 #game_browser {
+	 	font-family: Georgia, "Times New Roman", Times, serif;
+		font-weight: bold;
+		color: white;
+		background-color: #000;
+		border: 2px inset #999;
+		margin:10px auto 10px auto;
+		border-collapse:collapse;
+
+        width:95%;
+        font-size:0.8em;
+
+	 }
+
+
+	 /*set style for table header*/
+	#game_browser th{
+		padding-left:2px;
+		border:none;
+		font-family: Georgia, "Times New Roman", Times, serif;
+		font-weight: bold;
+		text-align:left;
+		border-bottom:1px solid white;
+	}
+
+	/*kibitz and locked images have no borders*/
+	#game_browser img {
+        border:none;
+    }
+
+	/*set font size and height of table cells*. width is not explicitely
+	set for most table cells*/
+    #game_browser td {
+        padding:1px 3px 1px 3px;
+  white-space:nowrap;
+    }
+
+	/*set explicit width for kibitz and locked columns
+	classes correspond to table columns*/
+    .kibitz, .locked {
+        width:16px;
+    }
+
+	/*do not underline game names*/
+	#game_browser a {
+	 	text-decoration:none;
+	 }
+	  
+	 /*classes correspond to table columns*/
+	 .game_name, .game-type,.game_players,.game_status,.game_created {
+	/*text-align:center;*/
+	 }
+	
+	 /*finished games are grayed out, including finished games names*/
+	 .browsefin, #game_browser .browsefin a {
+		 color:gray;
+	 }
+	 
+	 /* waiting games are italicized. 
+	 but waiting game names display normally*/
+     .browsewait, #game_browser .browsewait a {
+		font-style:italic;
+		color: #ca6; 
+	 }
+
+	 
+	 /*end forms*/
+	 
+	 
+.error {
+	position: absolute;
+	padding: 5px;
+	border: 1px solid #000000;
+	width: 356px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size: medium;
+	font-weight: bold;
+	background-color: #660000;
+	color: #FF9966;
+	left: 5px;
+	z-index: 3;
+}
+.close {
+	position: absolute;
+	right: 1px;
+	/*top: 25px;*/
+    top:1px;
+	width: 10px;
+	padding-top: 2px;
+	padding-left: 8px;
+	padding-right: 8px;
+	padding-bottom: 4px;
+	background-color: #000000;
+	color: #00FF00;
+}
+
+/*********************
+* NEWS!
+**********************/
+/* MW: changed to classes. ids need to be unique or funky stuff might happen.*/
+
+    .news {
+    	width: auto;
+    	margin:15px auto 0 auto;
+        overflow:auto;
+    /*	border: 1px solid #000;*/	
+    }
+    
+    .news_ttl {
+    	padding: 1px 2px 1px 20px;
+    	float: right;
+    	width: 65%;
+    	text-align: left;
+    	font-size: large;
+    	font-weight:600;
+    	color: #ca6;
+    	font-variant: small-caps;
+    }
+    
+    .news_name {
+    	padding: 1px 2px 1px 20px;
+    	font-size: large;
+    	font-weight: 600;
+    	font-variant: small-caps;
+    	color: #ca6;
+    }
+    	
+    .news_date {
+    	font-size: smaller;
+    	background-color: #3b3126;
+    	text-align:right;
+    	color: #FFF;
+    	padding: 1px 4px 1px 4px;
+    }
+    
+    .news_msg {
+    	border: 1px solid #000;
+    	color: #fff;
+    	font-size: medium;
+    	font-weight:500;
+    	background-color: #544637;
+    	padding: 4px 4px 4px 4px;
+    }
+    
+    .news_pg {text-align:right;color:#fff;}
+
+
+.plyrnm { font-weight:600; }
+.tinput { border: 1px solid black; width:150px; }
+.newstxt { border: 1px solid black; }
+.subnews { border: 1px solid black; width:80px;}
+ 
+  
+/************************         
+LOGIN!  AND FORMS!
+************************/
+	/* css for forms */
+	 #login form {
+		margin:2px;
+		float:left;
+	}
+	
+	#login legend { display:none; }
+	#login label { font-size:0.7em; } 
+     	
+	 fieldset { border:0px; margin:0;padding:0.1em; }
+
+	 input { font-size:0.7em; margin:0 0.5em 0 0; }
+
+
+	 #login a {
+		font-size:0.7em; 
+	 	width:18%;
+		text-decoration:none;
+	}
+     
+     .button, #login .button { 
+	    border: 1px solid black;
+	    text-decoration: none;
+	    color: black;
+	    background-color: #eee;
+	    padding: 3px 3px 1px 3px;
+	    margin-right:5px;
+	font-size:0.7em; 
+     }            
+     
+     .button_red { 
+            border: 1px solid black;
+            text-decoration: none;
+            color: black;
+            background-color: #ff0000;
+            padding: 3px 3px 1px 3px;
+            margin-right:5px;
+            font-size:0.7em; 
+     }            
+     
+    #login {
+		margin:5px 25px 0 3px;
+		float:right;clear:right;
+		height:1.7em;
+		font-family: Georgia, "Times New Roman", Times, serif;
+		font-size: .8em; 
+		background-color:#192614; 
+		border: 2px solid black;
+		padding: 3px; 
+	}
+
+    .loginput { border:1px solid black; }
+
+    #login a {
+		margin-right: 5px;
+		margin-left: 5px;
+		font-family: Georgia, "Times New Roman", Times, serif;
+        	color: white;
+        font-size:0.7em; 
+	}
+ 
+ 
+/**************************
+ TOP TEN SIDEBAR
+***************************/
+
+    #top_ten h2, #gamelog h2 {
+        font-size:0.8em;
+        border-bottom:2px solid white;
+        margin-bottom:0.5em;
+    }
+
+    #top_ten table{
+    	border: 1px inset #999;
+     	font-family: Georgia, "Times New Roman", Times, serif;
+        font-size:0.7em;
+    	font-weight: bold;
+    	color: white;
+    	width: 200px;
+    	text-align:center;
+    /*	margin:10px auto 10px auto;  */
+    	border-collapse:collapse;
+    	overflow:auto;
+    	background-color:black;
+    }
+    #top_ten table th{
+    	padding-left:2px;
+    	border:none;
+    	font-family: Georgia, "Times New Roman", Times, serif;
+    	font-weight: bold;
+    	text-align:left;
+    	border-bottom:1px solid white;
+    }
+    #top_ten table img { 
+        border:none;
+    }
+    #top_ten table td {
+        padding:0 3px 0 3px;
+    }
+    #top_ten table a {
+    	 	text-decoration:none;
+    } 
+
+/********************
+MEMBERLIST, MASS CHAT TABLES
+********************/
+    #memberlist, #mass_browser  {
+    	border: 1px inset #999;
+     	font-family: Georgia, "Times New Roman", Times, serif;
+    	font-size: small;
+    	font-weight: bold;
+    	color: white;
+    	width: auto;
+    	margin:10px auto 10px auto;  
+    	border-collapse:collapse;
+    	overflow:auto;
+    	background-color:black;
+    }
+    #memberlist th, #mass_browser th{
+    	padding-left:2px;
+    	border:none;
+    	font-family: Georgia, "Times New Roman", Times, serif;
+    	font-size: small;
+    	font-weight: bold;
+    	text-align:left;
+    	border-bottom:1px solid white;
+    }
+    #memberlist img, #mass_browser  img { border:none;}
+    #memberlist td, #mass_browser  td {font-size:small;height:15px;padding:0 3px 0 3px;}
+    #memberlist a, #mass_browser a {
+    	 	text-decoration:none;
+     }
+/* for tables' alternating lines  */
+.line_2 { background-color: #1e1e1e; }
+
+/* ******** GAME LOG ********* */
+	
+.gamelog { 
+	background-color: white;
+	font-size: .7em;
+	color: black;
+}
+.gamelog hr { border:1px dashed black;
+		color: black;
+	}
+
+/* **************************** */
+/***** DICE *****   */
+    #status_area {
+	position: relative;
+	right: 8px;
+	border: 2px solid black;
+	background-color: #192614;
+	font-size: .9em;
+	padding: 3px;
+	width:100%;
+}
+.status_area {
+	position: relative;
+	right: 8px;
+	border: 2px solid black;
+	background-color: #192614;
+	font-size: .9em;
+	padding: 3px;
+	width:100%;
+}
+.dice_area {
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	padding: 5px;
+	border: 2px solid #000000;
+	width: 135px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size: medium;
+	font-weight: bold;
+	background-color: #192614;
+	z-index: 3;
+}
+    #dice_roll_d { 
+	width:20px;
+    	height:20px;
+    	background-color: #fff;
+    	border:1px solid black;
+    	text-align:center;
+    	color:black;
+    	vertical-align: middle;
+    }
+    
+    #dice_roll_a { 
+	width:20px;
+    	height:20px;
+    	background-color: red;
+    	border:1px solid black;
+    	text-align:center;
+    	color:black;
+    	vertical-align: middle;
+    }
+    
+    
+/*************************************
+******       CARDS
+******************************/
+
+#cards { background-color: #36502b; border: 5px solid #192614; }
+#cards img { width: 43px; height: 30px; border:2px solid black; background-color:#eee;}
+#cards td { }
+
+.cards_bg { }
+   
+/******* 'legacy' code **
+
+******** join game page*/
+
+.createform {
+	padding: 8px;
+	border: 1px solid #000000;
+	position: relative;
+	width: 540px;
+	height: 450px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-weight: bold;
+	background-image: url(../images/ladyliberty_color.jpg);
+	background-color: #996633;
+	background-repeat: no-repeat;
+	color: #000000;
+}
+.joinform {
+	padding: 8px;
+	border: 1px solid #000000;
+	position: relative;
+	width: 540px;
+	height: 450px;
+	font-family:Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	font-weight: bold;
+	background-image: url(../images/join_bgcolor.jpg);
+	background-repeat: no-repeat;
+	color: #000000;
+}
+.creating {
+	padding: 8px;
+	left: 140px;
+	top: 100px;
+	border: 1px solid #000000;
+	position: relative;
+	width: 284px;
+	height: 172px;
+	background-image: url(../images/loadmap.jpg);
+	background-color: #CCCCCC;
+	background-repeat: no-repeat;
+}
+.loadtitle {
+	position: relative;
+	font-variant: small-caps;
+	font-size: 18px;
+	font-weight: bolder;
+	color: #660000;
+	top: -25px;
+}
+.note {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 9px;
+	color: #003399;
+}
+.title {	
+	font-variant: small-caps;
+	font-size: 16px;
+	font-weight: bolder;
+	position: relative;
+	left: 5%;
+	color: #660000;
+}
+.rightalign {
+	float: right;
+}
+.leftalign {
+	float: left;
+	padding-right: 8px;
+}
+.clearfloat {
+	clear: both;
+}
+
+
+
+
+
+
+
+
+     #mass_level_1 {
+	     
+		margin: 0px auto 15px 0px;
+		border: 1px solid #aaa;
+     }
+     #mass_level_2 {
+		border-top: 2px solid black;
+		margin: 1px 10px 10px 7px;
+     }
+     #mass_level_2 a { 
+     	color: blue;
+     	padding-left: 10px;
+     	font-size: .8em;
+     }
+     #mass_level_3  {
+
+		border-top: 2px solid black;
+		margin: 1px 10px 10px 47px;
+     }
+     
+     #mass_window { 
+	     background-color:white;
+	     margin: 5px auto;
+	     color: black;
+	     padding: 15px;
+	     font-size: .8em;
+     }
+     .mass_user { font-weight:600;}
+     .mass_date { font-size: .6em; }
+     .mass_title { 
+     	font-size: 1em; 
+     	color: black; 
+     	font-weight: 600; 
+     	background-color:#ddd; 
+     	border: 1px solid #aaa;
+     	padding: 2px 15px 2px 15px;}	
+     #mass_window img { float:left;
+     		padding: 1px 8px 0px 1px;
+     }
+     #mass_msg_post { width: 300px; }
+
+     #forum_post_box {
+	     margin: 0px auto 15px;
+	     width: 300px;
+	     border: 1px solid #ddd;
+	     padding-left: 35px;
+	     padding-bottom: 15px;
+     }
+     #forum_table { 
+     	margin: 15px auto;
+     	border: 1px solid #ddd;
+     }
+     .forum_topic_front { 
+	     text-indent: 10px;
+	     background-color: #eee;
+	     padding: 2px 30px 2px 15px;
+     }
+      
+     .forum_topic_front a { 
+	     color: #555;
+	     font-family: arial;
+	     font-weight: 600;
+     }
+
+
+table#mygames td.state-dead a {
+    color: #999;
+}    
+table#mygames td.state-winner a {
+    color: #660099;
+}
+table#mygames td.state-waiting a {
+    color: #DD0;
+}
+table#mygames td.state-trading a,
+table#mygames td.state-attacking a {
+    color: #D00;
+}
+table#mygames td.state-initial a {
+    color: #0D0;
+}
+
+
+

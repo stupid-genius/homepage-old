@@ -1,0 +1,168 @@
+<html>
+
+<head>
+<title>SuperGenius Desktop</title>
+<style>
+#divDrag0{position:absolute; left:0; top:0; height:384; width:512; clip:rect(0,512,384,0); background-color:black; layer-background-color:black}
+#divDrag1{position:absolute; left:0; top:0; height:200; width:350; clip:rect(0,362,212,0); background-color:black; layer-background-color:black}
+#divDrag2{position:absolute; left:0; top:0; height:100; width:100; clip:rect(0,100,100,0); background-color:black; layer-background-color:black}
+#console{border-width:thick; border-color:gray;}
+</style>
+
+<script language="JavaScript1.2">
+/********************************************************************************
+Copyright (C) 1999 Thomas Brattli
+This script is made by and copyrighted to Thomas Brattli at www.bratta.com
+Visit for more great scripts.
+This may be used freely as long as this msg is intact!
+********************************************************************************/
+
+//Browsercheck, and sets <div> for ie, and <layer> for ns
+	var n = (document.layers) ? 1:0;
+	var ie = (document.all) ? 1:0;
+	var layer=(n)?'layer':'div'
+
+/********************************************************************************
+Object constructor part.
+Setting the objects methods and properties
+********************************************************************************/
+function dragObj(obj,nest){
+	nest=(!nest) ? '':'document.'+nest+'.'										
+    this.css=(n) ? eval(nest+'document.'+obj):eval('document.all.'+obj+'.style')		
+    this.evnt=(n)? eval(nest+'document.'+obj):eval(obj);
+	this.getLeft=b_getLeft;
+	this.getTop=b_getTop;
+	this.moveIt=b_moveIt;
+	this.name=obj				
+	return this
+}
+function b_moveIt(x,y){
+	this.css.left=x
+	this.css.top=y
+}
+function b_getLeft(){
+  	x=(n)? this.css.left:this.css.pixelLeft
+	return x
+}
+function b_getTop(){
+  	y=(n)? this.css.top:this.css.pixelTop
+	return y
+}
+/********************************************************************************
+Capturing events, when the user mouseovers a layer
+the variable/property of that layer names .isOver will
+be true, and that means if the user clicks
+when he is on top of that layer it becomes draggable
+********************************************************************************/
+function dragInit(){
+	if(n) document.captureEvents(Event.MOUSEMOVE | Event.MOUSEDOWN | Event.MOUSEUP)
+	document.onmousedown=mdown
+	document.onmouseup=mup
+	document.onmousemove=mmove;
+}
+function mmover(num){
+	if(loaded) oDrag[num].isOver=true
+}
+function mmout(num){
+	if(loaded) oDrag[num].isOver=false
+}
+function mup(){
+	for(var i=0; i<oDrag.length;i++){
+		if(oDrag[i].isOver) {
+			oDrag[i].drag=false
+		}	
+	}
+}
+function mdown(num){
+	x=(n)?num.pageX:event.x
+    y=(n)?num.pageY:event.y
+	for(var i=0; i<oDrag.length;i++){
+		if(oDrag[i].isOver) {
+			oDrag[i].drag=true
+			oDrag[i].clickedX=x-oDrag[i].getLeft()
+			oDrag[i].clickedY=y-oDrag[i].getTop()
+			cZIndex++
+			oDrag[i].css.zIndex=cZIndex
+		}
+	}
+}
+function mmove(e){
+	x=(n)?e.pageX:event.x
+    y=(n)?e.pageY:event.y
+	for(var i=0; i<oDrag.length;i++){
+	if(oDrag[i].drag)
+		oDrag[i].moveIt(x-oDrag[i].clickedX,y-oDrag[i].clickedY)
+	}
+}
+
+/********************************************************************************
+Init, here's where you set how many draggable layers you want.
+Make one more "Drag[3]=new dragObj('divDrag3')" and as i did here, ++ the number
+to add draggable layers. You also have to add them in the stylesheet (in the <style></style>)
+To make another one that's sized 100*200 and with a background-color of red add this:
+#divDrag3{position:absolute; height:100; width:200; clip:rect(0,200,100,0); background-color:red; layer-background-color:red}
+Get the picture?
+There's one more thing you have to do to add layers, look further down for explanation.
+********************************************************************************/
+var loaded; 
+function init(){
+	dragInit()
+	oDrag=new Array()
+	oDrag[0]=new dragObj('divDrag0')
+	oDrag[1]=new dragObj('divDrag1')
+<!-- 	oDrag[2]=new dragObj('divDrag2') -->
+	loaded=true;
+}
+/********************************************************************************
+Set this variable to the zIndex you want it to start at, (if you have several
+layers and want it to start on the top, change to somthing higher then the uppermost layer
+********************************************************************************/
+cZIndex=10
+
+//Inits the page on page load
+if(n || ie) onload=init;
+</script>
+</head>
+
+<body background="../pics/bg_flames.jpg" scroll="no">
+<script language="JavaScript1.2">document.write('<'+layer+' id="divDrag0" onmouseover="mmover(0)" onmouseout="mmout(0)">')</script>
+	<!--Content of draglayer 0 --> <img src="../pics/quakepage.jpg" border="0" usemap="#quakepage">
+<script language="JavaScript1.2">document.write('</'+layer+'>')</script>
+
+<script language="JavaScript1.2">document.writeln('<'+layer+' id="divDrag1" onmouseover="mmover(1)" onmouseout="mmout(1)">')</script>
+	<!--Content of draglayer 1 --> <img src="../pics/console.gif" border="2" id="console" usemap="#console">
+<script language="JavaScript1.2">document.writeln('</'+layer+'>')</script>
+
+<!-- <script language="JavaScript1.2">document.writeln('<'+layer+' id="divDrag2" onmouseover="mmover(2)" onmouseout="mmout(2)">')</script> -->
+	<!--Content of draglayer 2--> 
+<!-- <script language="JavaScript1.2">document.writeln('</'+layer+'>')</script> -->
+
+<!--
+As you can see I write in a <layer> tag for netscape and a <div> tag for explorer
+the reason i do this is because Netscape doesn't understand
+mouseover's directly in a <div>, but it does in a <layer>.
+You can make Netscape do mouseovers on divs but you can't send parameters to the
+function if you do. So to add content in a layer here you just remove the
+line that says: "Content of draglayer x" and put's in whatever you want, images,
+text, whatever. If you do wanna use images i suggest you make them background-image
+in the layers/divs as that make the dragging work better. (use layer-background-image
+for netscape)
+To add a layer simply copy on of the ones that are there and change the numbers:
+id="divDrag2" to id="divDrag3", onmouseover="mmover(2)" onmouseout="mmout(2)" to
+onmouseover="mmover(3)" onmouseout="mmout(3)" and so on.
+Hope you enjoy the script and if you have any questions or problems with it
+you can reach me at dhtml@bratta.com.
+This is script is btw, backwardscompatibel, the content will just show static
+whereever you place it in non-dhtml browsers.
+-->
+
+<MAP NAME="quakepage">
+<AREA SHAPE="rect" COORDS="6,33,500,375" HREF="../games/quake.html">
+</MAP>
+<MAP NAME="console">
+<AREA SHAPE="rect" COORDS="12,15,60,40" HREF="../sgs/main.html">
+</MAP>
+
+</body>
+
+</html>

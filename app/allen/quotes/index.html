@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>QuoteNg</title>
+<style type="text/css">
+body
+{
+	background-color: #123456;
+	scrollbar-base-color: #123456;
+}
+table
+{
+	width: 800px;
+	height: 600px;
+	border: 0;
+	margin-left: auto;
+	margin-right: auto;
+}
+#toprow
+{
+	width: 800px;
+	height: 15px;
+	background-image: url(quotebook3_1x1.jpg);
+}
+#leftcol
+{
+	width: 35px;
+	height: 549px;
+	background-image: url(quotebook3_2x1.jpg);
+}
+#leftmidcol
+{
+	width: 345px;
+	height: 549px;
+	background-image: url(bg_parchment.gif);
+}
+#midcol
+{
+	width: 40px;
+	height: 549px;
+	background-image: url(quotebook3_2x3.jpg);
+}
+#rightmidcol
+{
+	width: 345px;
+	height: 549px;
+	background-image: url(bg_parchment2.gif);
+}
+#rightcol
+{
+	width: 35px;
+	height: 549px;
+	background-image: url(quotebook3_2x5.jpg);
+}
+#bottomrow
+{
+	width: 800px;
+	height: 36px;
+	background-image: url(quotebook3_3x1.jpg);
+}
+#ELeftPage,
+#ERightPage
+{
+	height: 530px;
+	overflow: scroll;
+	overflow-x: hidden;
+	scrollbar-base-color: #EFDECE;
+}
+#ERightPage
+{
+	margin-left: 0;
+	padding-left: 0;
+}
+#EQuote
+{
+	margin-left: 0;
+	padding-left: 0;
+	font-size: xx-large;
+	font-style: italic;
+	list-style-type: none;
+}
+</style>
+<script type="text/javascript" src="../../scripts/jquery.js"></script>
+<script type="text/javascript" src="../../scripts/JSNgCore.js"></script>
+<script type="text/javascript" src="../../scripts/jsMap.js"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+$(document).ready(function()
+{
+	var file;
+	var dictionary = new jsMap();
+
+	$("#ELeftPage").html('<ul id="EList"></ul>');
+	$("#ERightPage").html('<ul id="EQuote"></ul>');
+
+	file = new JSLineFile("quotes.txt");
+	while(file.hasNext())
+	{
+		var terms = file.nextLine().split(/\[quoteDiv\]/);
+		if(!dictionary.contains(terms[0]))
+			dictionary.add(terms[0], new Array());
+		dictionary.item(terms[0]).push(terms[1]);
+	}
+	var authors = dictionary.keys();
+	authors.sort();
+	for(var i in authors)
+		$("#EList").append("<li>"+authors[i]+"</li>");
+	$("li").css('cursor', 'pointer');
+	$("li").click(function()
+	{
+		var quotes = dictionary.item($(this).text());
+		$("#EQuote").empty();
+		$("#EQuote").hide();
+		for(var q in quotes)
+			$("#EQuote").append("<li>"+quotes[q]+"</li><br />");
+		$("#EQuote").animate({opacity: 'show'}, 'slow');
+	});
+});
+/*]]>*/
+</script>
+</head>
+<body>
+<table cellpadding="0" cellspacing="0">
+	<tr>
+		<td id="toprow" rowspan="1" colspan="5" />
+	</tr>
+	<tr>
+		<td id="leftcol" rowspan="1" colspan="1" />
+		<td id="leftmidcol" rowspan="1" colspan="1">
+			<div id="ELeftPage"></div>
+		</td>
+		<td id="midcol" rowspan="1" colspan="1" />
+		<td id="rightmidcol" rowspan="1" colspan="1">
+			<div id="ERightPage"></div>
+		</td>
+		<td id="rightcol" rowspan="1" colspan="1" />
+	</tr>
+	<tr>
+		<td id="bottomrow" rowspan="1" colspan="5" />
+	</tr>
+</table>
+</body>
+</html>

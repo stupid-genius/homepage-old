@@ -1,0 +1,180 @@
+<html>
+<head>
+	<title>Ali's Kniting Club Entrance Form</title>
+</head>
+<body bgcolor="pink" text="CornFlowerBlue">
+	<h1>Ali's Kniting Club Entrance Form</h1>
+	<form action="formProcessor.asp" method="post">
+	<fieldset>
+		First Name:<input type="text" name="firstName"/>
+		Last Name:<input type="text" name="lastName"/>
+		MI:<input type="text" size="2" name="MI"/>
+		<br>
+		DOB:<input type="text" size="2" name="month"/>
+		-<input type="text" size="2" name="day"/>
+		-<input type="text" size="4" name="year"/>
+		<br>
+		<label for="Boy">Boy<label/>
+		<input type="radio" name="gender" id="Boy"/>
+		<label for="Girl">Girl<label/>
+		<input type="radio" name="gender" id="Girl"/>
+		<br><br>
+		Do you have any alergies or medical issues?
+		<br>
+		<textarea rows="10" cols="30"></textarea>
+	</fieldset>
+	<br>
+	
+	<fieldset>
+		<legend> Location </legend>
+		Country:
+		<select name="country">
+			<option value="United States">United States</option>
+			<option value="Canada">Canada</option>
+			<option selected="selected" value="chose one">chose one</option>
+			<option value="Australia">Australia</option>
+			<option value="Brazil">Brazil</option>
+			<option value="China">China</option>
+			<option value="France">France</option>
+			<option value="Italy">Italy</option>
+			<option value="Germany">Germany</option>
+			<option value="Mexico">Mexico</option>
+			<option value="United Kingdom">United Kingdom</option>
+		</select>
+		City:<input type="text" name="city"/>
+		State:<input type="text" size="2" name="state"/>
+	</fieldset>
+	<br>
+	
+	<fieldset>
+		<legend> Parent/Guardian Information </legend>
+		First Name:<input type="text" name="PfirstName"/>
+		Last Name:<input type="text" name="PlastName"/>
+		MI:<input type="text" size="2" name="PMI"/>
+		<br>
+		Home Phone:<input type="text" size="3" name="homePhone1"/>
+		-<input type="text" size="3" name="homePhone2"/>
+		-<input type="text" size="4" name="homePhone3"/>
+		<br>
+		Cell:<input type="text" size="3" name="cell1"/>
+		-<input type="text" size="3" name="cell2"/>
+		-<input type="text" size="4" name="cell3"/>
+	</fieldset>
+	<br>
+	
+	<fieldset>
+		<legend> Availability </legend>
+		Which times through out the week do you have available for meetings?
+		<br><br>
+		<select name="Sunday">
+			<option value="0"> Sunday </option>
+			<option value="1"> 8:00-9:00 </option>
+			<option value="2"> 12:00-1:00 </option>
+			<option value="3"> 5:00-6:00 </option>
+		</select>
+		
+		<select name="Monday">
+			<option value="0"> Monday </option>
+			<option value="1"> 8:00-9:00 </option>
+			<option value="2"> 12:00-1:00 </option>
+			<option value="3"> 5:00-6:00 </option>
+		</select>
+		
+		<select name="Tuesday">
+			<option value="0"> Tuesday </option>
+			<option value="1"> 8:00-9:00 </option>
+			<option value="2"> 12:00-1:00 </option>
+			<option value="3"> 5:00-6:00 </option>
+		</select>
+		
+		<select name="Wensday">
+			<option value="0"> Wensday </option>
+			<option value="1"> 8:00-9:00 </option>
+			<option value="2"> 12:00-1:00 </option>
+			<option value="3"> 5:00-6:00 </option>
+		</select>
+		
+		<select name="Thursday">
+			<option value="0"> Thursday </option>
+			<option value="1"> 8:00-9:00 </option>
+			<option value="2"> 12:00-1:00 </option>
+			<option value="3"> 5:00-6:00 </option>
+		</select>
+		
+		<select name="Friday">
+			<option value="0"> Friday </option>
+			<option value="1"> 8:00-9:00 </option>
+			<option value="2"> 12:00-1:00 </option>
+			<option value="3"> 5:00-6:00 </option>
+		</select>
+		
+		<select name="Saturday">
+			<option value="0"> Saturday </option>
+			<option value="1"> 8:00-9:00 </option>
+			<option value="2"> 12:00-1:00 </option>
+			<option value="3"> 5:00-6:00 </option>
+		</select>
+	</fieldset>
+	<br>
+	
+	<fieldset>
+	<legend> Website Access </legend>
+	User Name: <input type="text" name="UserName"/>
+	Password: <input type="password" name="Password"/>
+	</fieldset>
+	<br>
+	
+	Do you already know how to knit?
+		<br>
+		<label for="Yes">Yes<label/>
+		<input type="radio" name="answer" value="1" id="Yes"/>
+		<br>
+		<label for="No">No<label/>
+		<input type="radio" name="answer" value="0" id="No"/>
+		<br><br>
+	
+	If so, which of the following have you completed?
+		<br>
+		Scarf<input type="checkbox" name="scarf"/>
+		<br>
+		Hat<input type="checkbox" name="hat"/>
+		<br>
+		Sweater<input type="checkbox" name="sweater"/>
+		<br>
+		Gloves<input type="checkbox" name="gloves"/>
+		<br>
+		Socks<input type="checkbox" name="socks"/>
+		<br>
+		Blanket<input type="checkbox" name="blanket"/>
+		<br>
+		Other<input type="checkbox" name="other"/>
+		<br><br>
+		
+	Which of the following would you say is your favorite to make?
+		<br>
+		<label for="Scarf">Scarf<label/>
+		<input type="radio" name="project" id="Scarf"/>
+		<br>
+		<label for="Hat">Hat<label/>
+		<input type="radio" name="project" id="Hat"/>
+		<br>
+		<label for="Sweater">Sweater<label/>
+		<input type="radio" name="project" id="Sweater"/>
+		<br>
+		<label for="Gloves">Gloves<label/>
+		<input type="radio" name="project" id="Gloves"/>
+		<br>
+		<label for="Socks">Socks<label/>
+		<input type="radio" name="project" id="Socks"/>
+		<br>
+		<label for="Blanket">Blanket<label/>
+		<input type="radio" name="project" id="Blanket"/>
+		<br>
+		<label for="Other">Other<label/>
+		<input type="radio" name="project" id="Other"/>
+		<br><br>
+		
+	<input type="submit" value="Submit">
+	</form>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<?php
+$dbhost = 'localhost';
+$dbuser = 'frisky_sql';
+$dbpass = 'k1nsl4y3r';
+$dbname = 'frisky_old';
+$tblprefix = '';
+$gamepath = '/netrisk/';
+$adminemail = 'webmaster@phprisk.org';
+$gamename = '0ff1c14l';
+$version = '1.9.6';
+$language = 'en_US';
+?>

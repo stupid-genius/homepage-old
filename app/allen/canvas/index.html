@@ -1,0 +1,263 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Stupid Genius Software</title>
+<style>
+body
+{
+	background-color: black;
+	color: black;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+div
+{
+	font-size: 50%;
+}
+#ETitle
+{
+	font-family: courier;
+	font-size: 200%;
+	font-weight: bold;
+}
+#EMain
+{
+	margin: 0;
+	padding: 0;
+}
+#EEffects
+{
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+</style>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="jsNgCore.js"></script>
+<script type="text/javascript" src="jsCanvasFilter.js"></script>
+<script type="text/javascript">
+var main;
+var filter;
+var console;
+var t;
+var l;
+var w;
+
+var xCanvasCenter,
+	yCanvasCenter,
+	canvasWidth,
+	canvasHeight;
+
+var events = new Array();
+var lastTick = new Date().getTime();
+var globalTime = 0;
+var lightTime = 0;
+var warpTime = 0;
+var lightInt = 0;
+var warpInt = 0;
+var flashInt = 255;
+var chargeSnd;
+var warpSnd;
+
+function pump()
+{
+	var ticks = new Date().getTime();
+	var timeDelta = ticks-lastTick;
+	lastTick = ticks;
+	globalTime += timeDelta;
+
+	if(globalTime>=events[events.length-1][0])
+	{
+		var curEvent = events.pop();
+		switch(curEvent[1])
+		{
+		case 1:
+			console.setCursor(curEvent[2]);
+			break;
+		case 2:
+			console.addText(curEvent[2]);
+			break;
+		case 3:
+			lightTime = ticks;
+			l = window.setInterval(eventLight, 1);
+			chargeSnd.play();
+			break;
+		case 4:
+			warpTime = ticks;
+			main.sync();
+			w = window.setInterval(eventWarp, 1);
+			warpSnd.play();
+			break;
+		}
+	}
+	main.fillF(0,0,0,0);
+	main.refresh();
+	console.refresh(50, 200);
+
+	if(events.length==0)
+	{
+		clearInterval(t);
+	}
+}
+function jsTyper(canvas)
+{
+	var context = canvas.getContext("2d");
+	var text = "";
+	var curPos = 0;
+	var lastTick = new Date().getTime();
+	var cursorInterval = 500;
+	var cursorTimer = 0;
+	var showCursor = true;
+	var disableCursor = false;
+	var lhs = new Audio("lhs.mp3");
+	var rhs = new Audio("rhs.mp3");
+	var sb = new Audio("sb.mp3");
+	var arrow = new Audio("arrow.mp3");
+	var rhl = ["h","i","j","k","l","m","n","o","p","u","y"];
+
+	this.setFont = function(sProp, c)
+	{
+		context.font = sProp;
+		context.fillStyle = "#"+c[0].toString(16)+c[1].toString(16)+c[2].toString(16);
+	}
+	this.setCursor = function(offset)
+	{
+		arrow.play();
+		curPos += offset;
+		if(curPos<0) curPos = 0;
+		if(curPos>=text.length) curPos = text.length-1;
+		if(offset==0)
+		{
+			disableCursor = !disableCursor;
+		}
+		showCursor = true;
+	}
+	this.addText = function(s)
+	{
+		if(rhl.indexOf(s) == -1)
+			if(s == " ")
+				sb.play();
+			else
+				lhs.play();
+		else
+			rhs.play();
+		var temp = text.substring(0,curPos)+s+text.substring(curPos,text.length);
+		text = temp;
+		curPos++;
+		showCursor = true;
+	}
+	this.refresh = function(x, y)
+	{
+		var ticks = new Date().getTime();
+		cursorTimer += ticks-lastTick;
+		lastTick = ticks;
+		if(cursorTimer>=cursorInterval)
+		{
+			cursorTimer = 0;
+			showCursor = !showCursor;
+		}
+		if(!disableCursor && showCursor)
+		{
+			var cursorOffset = context.measureText(text.substring(0,curPos)).width;
+			context.fillText("|", x+cursorOffset-context.measureText(text.charAt(curPos)).width/2, y);
+		}
+		context.fillText(text, x, y);
+	}
+}
+function eventLight()
+{
+	var time = new Date().getTime();
+	var timeDelta = time - lightTime;
+	lightTime = time;
+	var deltaInt = 128;
+	lightInt += deltaInt*(timeDelta/1000);
+
+	filter.createLightBloom(301, 177, 150, [255,255,255,lightInt]);
+
+	if(lightInt >= 255)
+		clearInterval(l);
+}
+function eventWarp()
+{
+	var effectWidth = 200;
+
+	var time = new Date().getTime();
+	var timeDelta = time - warpTime;
+	warpTime = time;
+	var deltaInt = 2;
+	warpInt += deltaInt*(timeDelta/1000);
+
+	main.createWarp(effectWidth, warpInt);
+	main.syncF();
+	main.applyLens(57, 75);
+	main.refresh();
+
+	if(warpInt > 2.3)
+	{
+		f = setInterval(eventFlash, 1);
+		clearInterval(w);
+		setTimeout(function(){window.location.href = "main.html";}, 5000);
+	}
+}
+function eventFlash()
+{
+	flash.fillF(255,255,255,flashInt);
+	flashInt -= 5;
+	flash.refresh();
+	if(flashInt<=0)
+	{
+		clearInterval(f);
+		flash.fillF(0,0,0,0);
+		flash.refresh();
+	}
+}
+$(document).ready(function()
+{
+	$("#ELogo").hide();
+	var lineFile = new JSLineFile("script");
+	while(lineFile.hasNext())
+	{
+		var line = lineFile.nextLine().split(/,/);
+		events.push([parseInt(line[0],10),parseInt(line[1],10), isNaN(line[2])|line[2]==" "?line[2]:parseInt(line[2])]);
+	}
+	events.reverse();
+
+	chargeSnd = new Audio("poweron.mp3");
+	warpSnd = new Audio("WMD.mp3");
+
+	flash = new jsCanvasFilter($("#EFlash")[0]);
+	filter = new jsCanvasFilter($("#EEffects")[0]);
+	main = new jsCanvasFilter($("#EMain")[0]);
+	console = new jsTyper($("#EMain")[0]);
+	console.setFont("bold 40px courier", [16, 255, 16]);
+	main.fill(0,0,0,255);
+	main.fillF(0,0,0,255);
+	main.refresh();
+
+	wWidth = $(window).width();
+	wHeight = $(window).height();
+	canvasWidth = main.backBuffer.width;
+	canvasHeight = main.backBuffer.height;
+	xCanvasCenter = canvasWidth/2;
+	yCanvasCenter = canvasHeight/2;
+	$("#EMain").offset({top:(wHeight-canvasHeight)/2,left:(wWidth-canvasWidth)/2});
+	$("#EEffects").offset({top:(wHeight-canvasHeight)/2,left:(wWidth-canvasWidth)/2});
+	$("#EFlash").offset({top:(wHeight-1024)/2,left:(wWidth-1280)/2});
+
+	$("#EFlash").click(function(){window.location.href = "main.html";});
+
+	t = window.setInterval(pump, 1);
+});
+</script>
+</head>
+<body>
+<canvas id="EMain" width="640" height="480"></canvas>
+<canvas id="EEffects" width="640" height="480"></canvas>
+<canvas id="EFlash" width="1280" height="1024"></canvas>
+</body>
+</html>

@@ -1,0 +1,458 @@
+<HTML>
+<HEAD>
+	<hta:application
+		ID="Mastermind" 
+	    APPLICATIONNAME="Mastermind" 
+	    BORDER="dialog"
+		BORDERSTYLE="normal"
+		INNERBORDER="yes"
+		MAXIMIZEBUTTON="no"
+		WINDOWSTATE="maximize"
+		SCROLL="yes"
+	    CAPTION="yes"
+	    SHOWINTASKBAR="yes"
+		CONTEXTMENU="no"
+		SELECTION="no"
+	    SINGLEINSTANCE="yes"
+	    SYSMENU="yes" />
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Author" CONTENT="Alyce Brady">
+   <TITLE>Mastermind</TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+<!-- hide script contents from old browsers
+
+var colorArray
+var answerArray
+var guessArray
+var firstHiddenIMG = 0
+var firstGuessIMG = 14
+var guessesAllowed = 12
+var guessesMade = 0
+var globalSeed = 1
+var veryRight="answer_good.gif"
+var lessRight="diamond_green.gif"
+
+function makeColorArray()
+{	this.length = 6
+	this[1] = "redball.gif"
+	this[2] = "blueball.gif"
+	this[3] = "yellowball.gif"
+	this[4] = "greenball.gif"
+	this[5] = "orangeball.gif"
+	this[6] = "purpleball.gif"
+}
+
+function makeAnswerArray()
+{	this.length = 4
+	for (var i = 1; i <= 4; i++)
+	{	this[i] = 0;
+	}
+}
+
+function makeRowElts()
+{	this.length = 4
+	for (var i = 1; i <= 4; i++)
+		this[i] = 0;
+}
+
+function makeARow(rowElts)
+{	this.elts = rowElts
+}
+
+function makeGuessArray()
+{	var	rowElts
+	this.length = guessesAllowed;
+	for (var i = 1; i <= guessesAllowed; i++)
+	{
+		rowElts = new makeRowElts()
+		this[i] = new makeARow(rowElts)
+	}
+}
+
+function random()
+{	// This algorithm comes from the Mastermind game produced by
+	// JONAS KARLSSON (http://www.dreamlink.se/mastermind/)
+	// It is copyrighted 1996 by JONAS KARLSSON
+    //  <!-- COPYRIGHT (C) 1996 BY JONAS KARLSSON.
+    //	Feel free to use this code as long as this header is untouched. -->
+	var randNbr = 0
+	var tempSeed
+	thedate=new Date();
+	tempSeed = Math.sqrt(globalSeed * (47.3457373545383+thedate.getSeconds())*(91.7808957845674+thedate.getMinutes()))
+	globalSeed = 3495937*(1000000*tempSeed-Math.floor(1000000*tempSeed))
+	randNbr = Math.floor(globalSeed) % 6
+	return randNbr
+}
+
+function newGame()
+{	var i
+	guessesMade = 0
+	
+	// Hide the answer and reset the guesses and clues
+	for ( i = 0; i < 4; i++ )
+		document.images[firstHiddenIMG+i].src = "help2InButton.gif"
+	for ( i = 0; i < guessesAllowed; i++ )
+	{  var j
+	   var base = firstGuessIMG+(i*8)
+	   for ( j = base; j < (base+4); j++ )
+		document.images[j].src = "baseButton.gif"
+	   for ( j = (base+4); j < (base+8); j++ )
+		document.images[j].src = "diamond.gif"
+	}
+
+	// Pick the four hidden pegs
+	for ( i = 1; i <= 4; i++ )
+		answerArray[i] = random() + 1
+}
+
+function initializePage()
+{	colorArray = new makeColorArray();
+	answerArray = new makeAnswerArray()
+	guessArray = new makeGuessArray()
+	newGame()
+}
+
+function chosePeg(column)
+{	var imageIndex = firstGuessIMG + (guessesMade*8) + column
+	color = document.masterform.elements[column].selectedIndex + 1
+	guessArray[guessesMade+1].elts[column+1] = color
+	document.images[imageIndex].src = colorArray[color]
+}
+
+function showAnswer()
+{	for (var i = 0; i < 4; i++)	
+		document.images[i].src = colorArray[answerArray[i+1]]
+}
+
+function peek(whichPeg)
+{	window.status = "peg "+whichPeg+": "+answerArray[whichPeg]
+}
+
+function debug()
+{
+var g=guessesMade+1
+window.status="ans: "+answerArray[1]+" "+answerArray[2]+" "+answerArray[3]+" "+answerArray[4]+"; guessesMade: "+guessesMade+"; guess: "+guessArray[g].elts[1]+" "+guessArray[g].elts[2]+" "+guessArray[g].elts[3]+" "+guessArray[g].elts[4]
+}
+
+function submitGuess()
+{   if ( guessesMade == guessesAllowed )
+	newGame()
+    else
+    {
+	var clue = firstGuessIMG + (guessesMade*8) + 4
+	var tempAnswer = new makeAnswerArray()
+	var nbrRight = 0
+	var timerID
+
+	// initialize tempAnswer
+	for ( var i = 1; i <= 4; i++ )
+		tempAnswer[i] = answerArray[i]
+
+	// mark right colored pegs in right holes
+	for ( var i = 1; i <= 4; i++ )
+		if ( guessArray[guessesMade+1].elts[i] == tempAnswer[i] )
+		{	document.images[clue++].src = veryRight
+			guessArray[guessesMade+1].elts[i] = 0
+			tempAnswer[i] = -1
+			nbrRight++
+		}
+
+	// mark right colored pegs in wrong holes
+	for ( var i = 1; i <= 4; i++ )
+	{   if ( guessArray[guessesMade+1].elts[i] != 0 )
+	      for ( var j = 1; j <= 4; j++ )
+		if ( guessArray[guessesMade+1].elts[i] == tempAnswer[j] )
+		{	document.images[clue++].src = lessRight
+			guessArray[guessesMade+1].elts[i] = 0
+			tempAnswer[j] = -1
+			break
+		}
+	}
+
+	// Were any guesses even a little right?
+	if ( clue == (firstGuessIMG + (guessesMade*8) + 4) )
+		document.images[clue].src = "smile.sad.gif"
+
+	// Game over?
+	if ( nbrRight == 4 || ++guessesMade == guessesAllowed )
+	{	showAnswer()
+  //		timerID = window.setTimeout ("newGame()", 500)
+	}
+    }
+}
+
+// end hiding script contents from old browsers -->
+</SCRIPT>
+</HEAD>
+
+<BODY bgcolor="#000000" text="#ffffff" onLoad="initializePage()">
+<FORM NAME="masterform">
+
+<CENTER>
+<H1><font color="#00ff00">Mastermind</font></H1>
+</CENTER>
+
+<strong>Four colored pegs are hidden here:</strong><br>
+<center>
+<table width=80%>
+<tr>
+<td width=25% align=center><IMG SRC="help2InButton.gif"
+	ALT="hidden peg"></td>
+<td width=25% align=center><IMG SRC="help2InButton.gif"
+	ALT="hidden peg"></td>
+<td width=25% align=center><IMG SRC="help2InButton.gif"
+	ALT="hidden peg"></td>
+<td width=25% align=center><IMG SRC="help2InButton.gif"
+	ALT="hidden peg"></td>
+</tr>
+</table>
+</center>
+
+<p>
+<strong>Guess a color for each peg:</strong>  (colors may be repeated)
+
+<br>
+<center>
+<table width=80%>
+<tr>
+<td width=25% align=center><font color="#ffffff">
+  <SELECT name="selectPeg0" onChange="chosePeg(0)">
+  <OPTION SELECTED><font color=#ff0000>Red</font>
+  <OPTION>Blue
+  <OPTION>Yellow
+  <OPTION>Green
+  <OPTION>Orange
+  <OPTION>Purple
+</SELECT></font></td>
+<td width=25% align=center><font color="#ffffff">
+  <SELECT name="selectPeg1" onChange="chosePeg(1)">
+  <OPTION SELECTED>Red
+  <OPTION>Blue
+  <OPTION>Yellow
+  <OPTION>Green
+  <OPTION>Orange
+  <OPTION>Purple
+</SELECT></font></td>
+<td width=25% align=center><font color="#ffffff">
+  <SELECT name="selectPeg2" onChange="chosePeg(2)">
+  <OPTION SELECTED>Red
+  <OPTION>Blue
+  <OPTION>Yellow
+  <OPTION>Green
+  <OPTION>Orange
+  <OPTION>Purple
+</SELECT></font></td>
+<td width=25% align=center><font color="#ffffff">
+  <SELECT name="selectPeg3" onChange="chosePeg(3)">
+  <OPTION SELECTED>Red
+  <OPTION>Blue
+  <OPTION>Yellow
+  <OPTION>Green
+  <OPTION>Orange
+  <OPTION>Purple
+</SELECT></font></td>
+</tr>
+</table>
+
+<br>
+<TABLE WIDTH=80%
+<TR>
+<TD WIDTH=30% align=right><font size=+3 color=#ffff00><INPUT TYPE="Button"
+	NAME="submitButton" VALUE="Submit Guess"
+	onClick="submitGuess()"></font></TD>
+<TD WIDTH=40% align=center>
+<IMG SRC="redball.gif" ALT="" ALIGN=center>
+<IMG SRC="blueball.gif" ALT="" ALIGN=center>
+<IMG SRC="yellowball.gif" ALT="" ALIGN=center>
+<IMG SRC="greenball.gif" ALT="" ALIGN=center>
+<IMG SRC="orangeball.gif" ALT="" ALIGN=center>
+<IMG SRC="purpleball.gif" ALT="" ALIGN=center>
+</TD>
+<TD WIDTH=30% align=left><font size=+3 color=#ff0000>
+	<INPUT TYPE="Button" NAME="newGameButton"
+	VALUE="New Game" onClick="newGame()"></font></TD>
+</TR>
+</TABLE>
+
+
+<p>
+<IMG SRC="line.colorbar.gif" ALT="">
+
+<H1>Progress Chart</H1>
+
+<p>
+<TABLE WIDTH="100%">
+<TR ALIGN=center>
+  <TD><IMG SRC="answer_good.gif" ALT="Great! " ALIGN=bottom>
+	means the right color in the right spot</TD>
+  <TD><IMG SRC="diamond_green.gif" ALT="Good " ALIGN=bottom> means
+	the right color in the wrong spot</TD>
+</TR>
+</TABLE>
+<IMG SRC="smile.sad.gif" ALT="No Good " ALIGN=center> means no
+pegs are of the right color
+</CENTER>
+
+<p>
+<TABLE WIDTH="80%">
+
+<TR>
+  <TH WIDTH=30% ALIGN=right>Guesses</TH>
+  <TD WIDTH=5%></TD>
+  <TD WIDTH=5%></TD>
+  <TD WIDTH=5%></TD>
+  <TD WIDTH=20% ALIGN=right><strong>Clues</strong></TD>
+  <TD WIDTH=5% colspan="4" nowrap>(in no particular order)</TD>
+  <TD WIDTH=5%></TD>
+  <TD WIDTH=5%></TD>
+  <TD WIDTH=5%></TD>
+</TR>
+
+<TR>
+  <TH ALIGN=right>1</TH>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+</TR>
+
+<TR>
+  <TH ALIGN=right>2</TH>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+</TR>
+
+<TR>
+  <TH ALIGN=right>3</TH>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+</TR>
+
+<TR>
+  <TH ALIGN=right>4</TH>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+</TR>
+
+<TR>
+  <TH ALIGN=right>5</TH>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+</TR>
+
+<TR>
+  <TH ALIGN=right>6</TH>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+</TR>
+
+<TR>
+  <TH ALIGN=right>7</TH>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+</TR>
+
+<TR>
+  <TH ALIGN=right>8</TH>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+</TR>
+
+<TR>
+  <TH ALIGN=right>9</TH>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+</TR>
+
+<TR>
+  <TH ALIGN=right>10</TH>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+</TR>
+
+<TR>
+  <TH ALIGN=right>11</TH>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+</TR>
+
+<TR>
+  <TH ALIGN=right>12</TH>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="baseButton.gif" HEIGHT=14 WIDTH=14></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+  <TD><IMG SRC="diamond.gif"></TD>
+</TR>
+</TABLE>
+
+</FORM>
+</BODY>
+</HTML>

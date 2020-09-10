@@ -1,0 +1,222 @@
+<HTML>
+
+<HEAD>
+	  <TITLE>DrawNg</TITLE>
+<style type="text/css">
+<!--
+body {scrollbar-base-color:123456;}
+-->
+</style>
+<script language="JavaScript1.2">
+/********************************************************************************
+This script is made by and copyrighted to Thomas Brattli at www.bratta.com
+Visit for more great scripts. 
+This may be used freely as long as this msg is intact!
+********************************************************************************
+Browsercheck:*/
+ie=document.all?1:0
+n=document.layers?1:0
+
+/********************************************************************************
+Here are the variables you must set: (this is the only part you have to change)
+
+Remember tho, if you wan't different size for the layers, different clip or anything
+change that in the stylesheet.
+*/
+
+//The delay between the fades (in milliseconds) smaller value gives less time:
+betweendelay=5000
+
+//Do you wan't it to start over on the first one when it's gone trought all the news?
+//(set to 0 if not)
+var loop=1
+
+//What font do you wan't it use?
+FontFace='arial,helvetiva'
+
+//What font-size (in pixel)?
+FontSize=12
+
+//Do you wan't it to fade out aswell? 1 for on, 0 for off
+fadeback=1
+
+//Set the colors, first color is same as background, last color is the color it stops at:
+//You can have upto 7 colors, set the ones you wan't use to 0
+colors=new Array()
+colors[0]='#000000'
+colors[1]='#333333'
+colors[2]='#666666'
+colors[3]='#999999'
+colors[4]='#CCCCCC'
+colors[5]='#EEEEEE'
+colors[6]='#FFFFFF'
+
+//This is the news you wanna have, set the link and the text. If you don't wan't it to link anywhere
+//use a # as the link
+news=new Array()
+//Copy there three lines and change the info and numbers to get more news.
+news[0]=new Array()
+news[0]["text"]="Dragon Chess Board.  Hand-drawn in MSPaint."
+news[0]["link"]="#"
+
+news[1]=new Array()
+news[1]["text"]="Dragon Chess Board.  Rendered in trueSpace."
+news[1]["link"]="http://www.caligari.com"
+
+news[2]=new Array()
+news[2]["text"]="Study using color for specular highlights.  Hand-drawn in MSPaint."
+news[2]["link"]="#"
+
+news[3]=new Array()
+news[3]["text"]="Study using RGB averaging for diffuse highlights.  Hand-drawn in MSPaint."
+news[3]["link"]="#"
+
+news[4]=new Array()
+news[4]["text"]="Study using trueSpace hybrid radiosity renderer."
+news[4]["link"]="http://www.caligari.com"
+
+news[5]=new Array()
+news[5]["text"]="Another diffuse highlight study.  Hand-drawn in MSPaint."
+news[5]["link"]="#"
+
+news[6]=new Array()
+news[6]["text"]="Raycast reflection study using trueSpace."
+news[6]["link"]="http://www.caligari.com"
+
+news[7]=new Array()
+news[7]["text"]="Mandelbrot set plotted using BrotPlot."
+news[7]["link"]="../mandelbrot/montage.html"
+
+/*news[]=new Array()
+news[]["text"]=""
+news[]["link"]="#"*/
+
+/*Dont change anything below this!
+*********************************************************************************/
+fadeInit=new Function("oNews=new makeObj('divNews','divCont'); fadeNews(0)")
+function makeObj(obj,nest){
+    nest=(!nest) ? '':'document.'+nest+'.'
+    this.css=(n) ? eval(nest+'document.'+obj):eval(obj+'.style')
+    this.writeref=(n) ? eval(nest+'document.'+obj+'.document'):eval(obj);		
+	this.fadeIt=b_fadeIt
+    this.obj = obj + "Object"; 	eval(this.obj + "=this")	
+}
+function b_fadeIt(text,link,font,size,speed,fn,num,c0,c1,c2,c3,c4,c5,c6){
+	if(num<arguments.length && arguments[num]!=0){
+		writetext='<a href="'+link+'" style="text-decoration:none; font-size:'+size+'px">'
+		+'<font face="'+font+'" color="'+arguments[num]+'">'+text+'</font></a>'
+		if(n){this.writeref.write(writetext); this.writeref.close()}
+		if(ie) this.writeref.innerHTML=writetext		
+		num++
+		setTimeout(this.obj+'.fadeIt("'+text+'","'+link+'","'+font+'",'+size+','+speed+',"'
+		+fn+'",'+num+',"'+c0+'","'+c1+'","'+c2+'","'+c3+'","'+c4+'","'+c5+'","'+c6+'")',speed)
+	}else setTimeout('eval('+fn+')',betweendelay)
+}
+function fadeNews(num){
+	if(num<news.length){
+		fn=fadeback?'fadeBack('+num+')':'fadeNews('+(num+1)+')';
+		oNews.fadeIt(news[num]["text"],news[num]["link"],FontFace,FontSize,100,fn,7,
+		colors[0],colors[1],colors[2],colors[3],colors[4],colors[5],colors[6])
+	}else if(loop)fadeNews(0)
+}
+function fadeBack(num){
+	if(num>=0){
+		oNews.fadeIt(news[num]["text"],news[num]["link"],FontFace,FontSize,100,'fadeNews('+(num+1)
+		+')',7,colors[6],colors[5],colors[4],colors[3],colors[2],colors[1],colors[0])
+	}
+}
+onload=fadeInit;
+/*End of fadescript
+**********************************************************************************/
+</script>
+</HEAD>
+
+<body bgcolor="#123456" text="#FFFFFF" link="#FFFFFF" vlink="#FFFFFF" alink="#FFFFFF" topmargin="0" leftmargin="0" rightmargin="0">
+<center>
+<!-- Begin Table -->
+<TABLE BORDER="0" CELLPADDING="0" CELLSPACING="0" WIDTH="758" HEIGHT="768">
+
+<TR>
+<TD ROWSPAN="1" COLSPAN="3" WIDTH="758" HEIGHT="122">
+	<IMG NAME="Image20" SRC="../pics/Image2_1x1.gif" WIDTH="758" HEIGHT="122" BORDER="0"></TD>
+</TR>
+
+<TR>
+<TD ROWSPAN="1" COLSPAN="1" WIDTH="105" HEIGHT="523">
+	<IMG NAME="Image21" SRC="../pics/Image2_2x1.gif" WIDTH="105" HEIGHT="523" BORDER="0"></TD>
+<TD ROWSPAN="1" COLSPAN="1" WIDTH="547" HEIGHT="523" bgcolor="black">
+<applet archive="mosaic.jar" code="mosaic.class" width="547" height="500">
+<param name="credits" value="Applet by Fabio Ciucci (www.anfyteam.com)">
+<param name="res" value="1">
+<param name="image1" value="dragon_chess_board_old.jpg">
+<param name="link1" value="NO">
+<param name="statusmsg1" value="hand-drawn in Microsoft Paint">
+<param name="image2" value="dragon_chess_board.jpg">
+<param name="link2" value="NO">
+<param name="statusmsg2" value="rendered in trueSpace">
+<param name="image3" value="ball.jpg">
+<param name="link3" value="NO">
+<param name="statusmsg3" value="hand-drawn in Microsoft Paint">
+<param name="image4" value="ball2.jpg">
+<param name="link4" value="NO">
+<param name="statusmsg4" value="hand-drawn in Microsoft Paint">
+<param name="image5" value="ball3.jpg">
+<param name="link5" value="NO">
+<param name="statusmsg5" value="hand-drawn in Microsoft Paint">
+<param name="image6" value="balls.jpg">
+<param name="link6" value="NO">
+<param name="statusmsg6" value="hand-drawn in Microsoft Paint">
+<param name="image7" value="balls2.jpg">
+<param name="link7" value="NO">
+<param name="statusmsg7" value="rendered in trueSpace">
+<param name="image8" value="mandelbrot_BW.jpg">
+<param name="link8" value="NO">
+<param name="statusmsg8" value="created using BrotPlot">
+<param name="pause" value="10000">
+<param name="tileswidth" value="6">
+<param name="tilesheight" value="8">
+<param name="tilesteps" value="12">
+<param name="backimage" value="NO">
+<param name="backr" value="0">
+<param name="backg" value="0">
+<param name="backb" value="0">
+<param name="overimg" value="NO">
+<param name="overimgX" value="0">
+<param name="overimgY" value="0">
+<param name="regcode" value="NO">
+<param name="regnewframe" value="NO">
+<param name="regframename" value="_blank">
+<param name="memdelay" value="15">
+<param name="priority" value="1">
+<param name="MinSYNC" value="30">
+Sorry, your browser doesn't support Java(tm).
+</applet>
+<div id="divCont" style="position:relative; width:500; height:15; left:50; top:0">
+	<div id="divNews" style="position:absolute">
+		<script>//We gotta write something here so netscape will make it
+		//be the correct size, but we will only write if it's a 4.x browser
+		if(document.all || document.layers) document.write("My Artwork")
+		</script>
+	</div>
+<div style="position:relative; width:150; height:18; left:300; top:0" align="right">
+<script>
+if(self.parent.frames.length!=0)
+document.write("<a href='#' target='_top'>fullscreen</a>")
+</script>
+</div>
+</div>
+<TD ROWSPAN="1" COLSPAN="1" WIDTH="106" HEIGHT="523">
+	<IMG NAME="Image23" SRC="../pics/Image2_2x3.gif" WIDTH="106" HEIGHT="523" BORDER="0"></TD>
+</TR>
+
+<TR>
+<TD ROWSPAN="1" COLSPAN="3" WIDTH="758" HEIGHT="123">
+	<IMG NAME="Image24" SRC="../pics/Image2_3x1.gif" WIDTH="758" HEIGHT="123" BORDER="0"></TD>
+</TR>
+
+</TABLE>
+<!-- End Table -->
+</center>
+</BODY>
+
+</HTML>

@@ -1,0 +1,42 @@
+.editor {
+	color: rgb(51, 51, 51); background-color: rgb(238, 238, 238);
+}
+/*html {
+	margin: 0px; padding: 0px; height: 100%;
+}
+body {
+	margin: 0px; padding: 0px; height: 100%;
+}*/
+.print {
+	display: none;
+}
+.editor {
+	display: none;
+}
+.editorcursor {
+	display: none;
+}
+.editor {
+	display: none !important;
+}
+html {
+	overflow: auto !important;
+}
+body {
+	overflow: auto !important;
+}
+.editorcursor {
+	display: none !important;
+}
+.print {
+	left: 0px; top: 0px; height: 100%; font-family: monospace; display: block !important; position: absolute;
+}
+.editortools {
+	display: none !important;
+}
+textarea {
+	display: none !important;
+}
+input {
+	display: none !important;
+}

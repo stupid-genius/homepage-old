@@ -1,0 +1,304 @@
+.map {
+	/*position: absolute;*/
+    background-image:url('../images/worldmap.jpg');
+    background-repeat:no-repeat;
+	position:relative; 
+	color: #000000;
+	margin: 0 auto 0 auto;
+    padding:0;
+	width: 828px;
+	height: 568px;
+	z-index: 0;
+}
+
+.map li {
+    display:block;
+    width:55px;
+    height:38px;
+    position: absolute;
+    margin:0;
+    padding:0;
+}
+.map li a {
+    position:absolute;
+    top:0;left:0;
+    width:55px; 
+    height:38px;
+    margin:0;
+    padding:0;
+    display:block;
+}
+/*
+.mapunits {
+	position: relative;
+	color: #000000;
+	top: 0px;
+	left: 0px; 
+	width: 300px;
+	height: 400px;
+	z-index: 3;
+}*/ 
+.colorbar{
+	position: relative;
+	top: 25px;
+	left: 0px;
+}
+.colorbox{
+	position: relative;
+	left: 12px;
+	width: 100px;
+	height: 20px;
+	border: 1px solid #000000;
+	color: black;
+	font-weight: 600;
+}
+
+.red .infantry1    {background-image:url("../images/infantry1_red.gif");}
+.red .infantry2    {background-image:url("../images/infantry2_red.gif");}
+.red .infantry3    {background-image:url("../images/infantry3_red.gif");}
+.red .infantry4    {background-image:url("../images/infantry4_red.gif");}
+.red .cavalry      {background-image:url("../images/cavalry_red.gif");}
+.red .cannon       {background-image:url("../images/cannon_red.gif");}
+.black .infantry1  {background-image:url("../images/infantry1_black.gif");}
+.black .infantry2  {background-image:url("../images/infantry2_black.gif");}
+.black .infantry3  {background-image:url("../images/infantry3_black.gif");}
+.black .infantry4  {background-image:url("../images/infantry4_black.gif");}
+.black .cavalry    {background-image:url("../images/cavalry_black.gif");}
+.black .cannon     {background-image:url("../images/cannon_black.gif");}
+.grey .infantry1   {background-image:url("../images/infantry1_grey.gif");}
+.grey .infantry2   {background-image:url("../images/infantry2_grey.gif");}
+.grey .infantry3   {background-image:url("../images/infantry3_grey.gif");}
+.grey .infantry4   {background-image:url("../images/infantry4_grey.gif");}
+.grey .cavalry     {background-image:url("../images/cavalry_grey.gif");}
+.grey .cannon      {background-image:url("../images/cannon_grey.gif");}
+.blue .infantry1   {background-image:url("../images/infantry1_blue.gif");}
+.blue .infantry2   {background-image:url("../images/infantry2_blue.gif");}
+.blue .infantry3   {background-image:url("../images/infantry3_blue.gif");}
+.blue .infantry4   {background-image:url("../images/infantry4_blue.gif");}
+.blue .cavalry     {background-image:url("../images/cavalry_blue.gif");}
+.blue .cannon      {background-image:url("../images/cannon_blue.gif");}
+.green .infantry1  {background-image:url("../images/infantry1_green.gif");}
+.green .infantry2  {background-image:url("../images/infantry2_green.gif");}
+.green .infantry3  {background-image:url("../images/infantry3_green.gif");}
+.green .infantry4  {background-image:url("../images/infantry4_green.gif");}
+.green .cavalry    {background-image:url("../images/cavalry_green.gif");}
+.green .cannon     {background-image:url("../images/cannon_green.gif");}
+.teal .infantry1   {background-image:url("../images/infantry1_teal.gif");}
+.teal .infantry2   {background-image:url("../images/infantry2_teal.gif");}
+.teal .infantry3   {background-image:url("../images/infantry3_teal.gif");}
+.teal .infantry4   {background-image:url("../images/infantry4_teal.gif");}
+.teal .cavalry     {background-image:url("../images/cavalry_teal.gif");}
+.teal .cannon      {background-image:url("../images/cannon_teal.gif");}
+.purple .infantry1   {background-image:url("../images/infantry1_purple.gif");}
+.purple .infantry2   {background-image:url("../images/infantry2_purple.gif");}
+.purple .infantry3   {background-image:url("../images/infantry3_purple.gif");}
+.purple .infantry4   {background-image:url("../images/infantry4_purple.gif");}
+.purple .cavalry     {background-image:url("../images/cavalry_purple.gif");}
+.purple .cannon      {background-image:url("../images/cannon_purple.gif");}
+.yellow .infantry1 {background-image:url("../images/infantry1_yellow.gif");}
+.yellow .infantry2 {background-image:url("../images/infantry2_yellow.gif");}
+.yellow .infantry3 {background-image:url("../images/infantry3_yellow.gif");}
+.yellow .infantry4 {background-image:url("../images/infantry4_yellow.gif");}
+.yellow .cavalry   {background-image:url("../images/cavalry_yellow.gif");}
+.yellow .cannon    {background-image:url("../images/cannon_yellow.gif");}
+
+/*(the army counts)*/
+.map li a p{
+	position: absolute;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 9px;
+	font-weight: bolder;
+	text-align: center;
+    padding:0 2px 0 2px;
+    margin:0;
+	height: 12px;
+	border: 1px solid black;
+    color:black;
+	left: 27px;
+	bottom: -3px;
+    z-index:4;
+}
+/*backgrounds for the army counts*/
+.red    a p{background-color: #CC3300;}
+.black  a p{background-color: #888888;}
+.grey   a p{background-color: #CCCCCC;}
+.blue   a p{background-color: #6677FF;}
+.green  a p{background-color: #00CC33;}
+.teal   a p{background-color: #33CCCC;}
+.purple   a p{background-color: #A962D7;}
+.yellow a p{background-color: #FFFF66;}     
+
+/*individual country positions*/
+#NewGuinea {
+top: 375px;
+left: 710px;
+}
+#WesternAustralia {
+top: 430px;
+left: 615px;
+}
+#EasternAustralia {
+top: 440px;
+left: 690px;
+}
+#Indonesia {
+top: 365px;
+left: 620px;
+}
+#Afghanistan {	
+top: 225px;
+left: 500px;
+}
+#Alaska {	
+top: 120px;
+left: 40px;
+}
+#Alberta{	
+top: 155px;
+left: 115px;
+}
+#Argentina{
+top: 435px;
+left: 185px;
+}
+#Brazil{
+top: 355px;
+left: 225px;
+}
+#CentralAmerica{
+top: 260px;
+left: 150px;
+}
+#China{
+top: 238px;
+left: 568px;
+}
+#Congo{
+top: 385px;
+left: 385px;
+}
+#EasternUS{
+top: 215px;
+left: 180px;
+}
+#EastAfrica{
+top: 340px;
+left: 415px;
+}
+#Egypt{
+top: 285px;
+left: 398px;
+}
+#GreatBritain{
+top: 180px;
+left: 330px;
+}
+#Greenland{
+top: 75px;
+left: 305px;
+}
+#Iceland{
+top: 127px;
+left: 327px;
+}
+#India{
+top: 290px;
+left: 525px;
+}
+#Irkutsk{
+top: 167px;
+left: 622px;
+}
+#Japan{
+top: 220px;
+left: 695px;
+}
+#Kamchatka{
+top: 117px;
+left: 735px;
+}
+#Madagascar{
+top: 442px;
+left: 450px;
+}
+#MiddleEast{
+top: 267px;
+left: 450px;
+}
+#Mongolia{
+top: 205px;
+left: 645px;
+}
+#NorthAfrica{
+top: 305px;
+left: 328px;
+}
+#NorthernEurope{
+top: 188px;
+left: 373px;
+}
+#NWTerritory{
+top: 115px;
+left: 130px;
+}
+#Oikiotoluk{
+top: 95px;
+left: 205px;
+}
+#Ontario{
+top: 155px;
+left: 180px;
+}
+#Peru{
+top: 375px;
+left: 165px;
+}
+#Quebec{
+top: 160px;
+left: 235px;
+}
+#Scandinavia{
+top: 118px;
+left: 385px;
+}
+#Siam{
+top: 300px;
+left: 600px;
+}
+#Siberia{
+top: 130px;
+left: 573px;
+}
+#SouthernEurope{
+top: 227px;
+left: 388px;
+}
+#SouthAfrica{
+top: 445px;
+left: 380px;
+}
+#Ural{
+top: 148px;
+left: 520px;
+}
+#Ukraine{
+top: 160px;
+left: 445px;
+}
+#Venezuela{
+top: 310px;
+left: 165px;
+}
+#WesternEurope{
+top: 235px;
+left: 327px;
+}
+#WesternUS{
+top: 203px;
+left: 127px;
+}
+#Yakutsk{
+top: 108px;
+left: 655px;
+}
+                  

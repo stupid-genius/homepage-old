@@ -1,26 +1,146 @@
-<!DOCTYPE HTML>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Valid HTML Template</title>
-	<style>
-		body{
-			background: #81bcf7;
-			color: #123456;
-		}
-	</style>
-	<link rel="stylesheet" href="styles/main.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>The Ng's Home Page</title>
+<style type="text/css">
+body
+{
+	scrollbar-base-color: #123456;
+	margin: 0;
+	background: #123456;
+}
+img
+{
+	padding: 0;
+	margin: 0;
+}
+tr, td
+{
+	padding: 0;
+	margin: 0;
+}
+#news
+{
+	padding-left: 10%;
+	padding-right: 10%;
+}
+p
+{
+	width: 100px;
+	font: status-bar;
+	text-align: justify;
+}
+p:first-line
+{
+	text-decoration: underline;
+}
+</style>
+<!-- Rollover Image Script - Place within <head> tag -->
+<script language="JavaScript" type="text/javascript">
+function SwitchImg()
+{ //start
+  var rem, keep=0, store, obj, switcher=new Array, history=document.Data;
+    for (rem=0; rem < (SwitchImg.arguments.length-2); rem+=3) {
+    	store = SwitchImg.arguments[(navigator.appName == 'Netscape')?rem:rem+1];
+    if ((store.indexOf('document.layers[')==0 && document.layers==null) ||
+        (store.indexOf('document.all[')==0 && document.all==null))
+         store = 'document'+store.substring(store.lastIndexOf('.'),store.length);
+         obj = eval(store);
+    if (obj != null) {
+   	   switcher[keep++] = obj;
+      switcher[keep++] = (history==null || history[keep-1]!=obj)?obj.src:history[keep];
+      obj.src = SwitchImg.arguments[rem+2];
+  } }
+  document.Data = switcher;
+} //end
+
+function RestoreImg()
+{ //start
+  if (document.Data != null)
+    for (var rem=0; rem<(document.Data.length-1); rem+=2)
+      document.Data[rem].src=document.Data[rem+1];
+} //end
+</script>
 </head>
-<body>
-	<h1>Web App Template</h1>
-	<p>The scaffolding tools have become unusable, so I'm building my own starting template.</p>
-	<div>
-		<ul>
-			<li>build tool: Grunt</li>
-			<li>dev server: grunt serve</li>
-			<li>npm and bower for packages</li>
-		</ul>
+
+<body text="#987654" link="#987654" vlink="#987654" alink="#987654" onload="if(self.parent.frames.length!=0)self.parent.location=document.location;">
+<!-- begin table -->
+<table border="0" cellpadding="0" cellspacing="0" width="1000" height="978">
+
+<tr>
+<td rowspan="1" colspan="7" width="1000" height="139">
+	<img name="index0" src="pics/index_1x1.jpg" width="1000" height="139" border="0" alt="collage"></td>
+</tr>
+
+<tr>
+<td rowspan="1" colspan="7" width="1000" height="13">
+	<img name="index1" src="pics/index_2x1.jpg" width="1000" height="13" border="0" alt="h_bar"></td>
+</tr>
+
+<tr>
+<td rowspan="7" colspan="1" width="13" height="813">
+	<img name="index2" src="pics/index_3x1.jpg" width="13" height="813" border="0" alt="v_bar"></td>
+<td rowspan="1" colspan="1" width="152" height="193">
+	<a href="allen/allen_frame.html" onmouseout="RestoreImg()" onmouseover="SwitchImg('document.allen_ro','document.allen_ro','pics/allen_ro.gif')"><img src="pics/allen.gif" name="allen_ro" width="152" height="193" alt="Allen's Page" border="0"></a></td>
+<td rowspan="7" colspan="1" width="15" height="813">
+	<img name="index4" src="pics/index_3x3.jpg" width="15" height="813" border="0" alt="v_bar"></td>
+<td rowspan="7" colspan="1" width="643" height="813">
+	<img name="index5" src="pics/index_3x4.jpg" width="643" height="813" border="0" alt="The Ng's"></td>
+<td rowspan="7" colspan="1" width="14" height="813">
+	<img name="index6" src="pics/index_3x5.jpg" width="14" height="813" border="0" alt="v_bar"></td>
+<td rowspan="7" colspan="1" width="150" height="813" valign="top" align="left">
+	<div id="news">
+	<h2>News</h2>
+	<p>Jan. 9, 2008<br />Well, it's not really news anymore, but we've bought our first <a href="http://www.cityofracine.org/WebPro/images/Image/15000/332001.jpg
+">house</a>!
+	<p>Sept. 28, 2005<br />Welcome to our permanent home on the Internet!  Please browse the site as many new things have been added.</p>
+	<p>Oct. 16, 2004<br />Site update is complete (for now).  News and pics will still be updated periodically.  Email the <a href="mailto:stupidgenius@stupid-genius.com">webmaster</a> with comments, suggestions, bugs, etc.</p>
+	<p>Sept. 19, 2004<br /><a href="ali/ali_main.html">Ali's page</a> is up and it looks really nice!  Go check it out!</p>
+	<p>Sept. 9, 2004<br />We're back!  Our site is back up and I've started work on the much awaited update!  Keep checking back often.</p>
+	<p>Sept. 8, 2004<br />Making good progress on initial artwork for new site!</p>
 	</div>
-	<script src="scripts/main.js"></script>
+	</TD>
+<td rowspan="7" colspan="1" width="13" height="813">
+	<img name="index8" src="pics/index_3x7.jpg" width="13" height="813" border="0" alt="v_bar"></td>
+</tr>
+
+<tr>
+<td rowspan="1" colspan="1" width="152" height="14">
+	<img name="index9" src="pics/index_4x1.jpg" width="152" height="14" border="0" alt="separator"></td>
+</tr>
+
+<tr>
+<td rowspan="1" colspan="1" width="152" height="192">
+		<a href="#" onmouseout="RestoreImg()" onmouseover="SwitchImg('document.terri_ro','document.terri_ro','pics/terri_ro.gif')"><img src="pics/index_5x1.jpg" name="terri_ro" width="152" height="192" alt="Terri's Page" border="0"></a></td>
+</tr>
+
+<tr>
+<td rowspan="1" colspan="1" width="152" height="14">
+	<img name="index11" src="pics/index_6x1.jpg" width="152" height="14" border="0" alt="separator"></td>
+</tr>
+
+<tr>
+<td rowspan="1" colspan="1" width="152" height="194">
+	<a href="ali/ali_main.html" onmouseout="RestoreImg()" onmouseover="SwitchImg('document.ali_ro','document.ali_ro','pics/ali_ro.gif')"><img src="pics/index_7x1.jpg" name="ali_ro" width="152" height="193" alt="Ali's Page" border="0"></a></td>
+</tr>
+
+<tr>
+<td rowspan="1" colspan="1" width="152" height="14">
+	<img name="index13" src="pics/index_8x1.jpg" width="152" height="14" border="0" alt="separator"></td>
+</tr>
+
+<tr>
+<td rowspan="1" colspan="1" width="152" height="192">
+	<a href="#" onmouseout="RestoreImg()" onmouseover="SwitchImg('document.michael_ro','document.michael_ro','pics/michael_ro.gif')"><img name="michael_ro" src="pics/index_9x1.gif" width="152" height="192" border="0" alt="Michael's Page"></td>
+</tr>
+
+<tr>
+<td rowspan="1" colspan="7" width="1000" height="13">
+	<img name="index15" src="pics/index_10x1.jpg" width="1000" height="13" border="0" alt="h_bar"></td>
+</tr>
+
+</table>
+<!-- end table -->
 </body>
+
 </html>

@@ -1,0 +1,226 @@
+a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+body {
+/*  for some reason, this was just fcuking up the chat iframe....  but it doesnt sem to  hurt anyhting to ahve it off.
+	color: #FFFFFF;
+	background-color: #36502B*/
+}
+
+/*  3-Column In-Game BEGIN --------------- */	
+#game_container {
+    padding-left:180px;/*LEFT COLUM WIDTH!*/
+    padding-right:184px;/*RIGHT COLUMN WIDTH!+CENTER BORDER*/
+    min-width:400px;
+}
+
+
+/*middle colum*/
+#game_board {
+	border-top:2px solid black;
+	border-left:2px solid black;
+	border-right:2px solid black;
+    width:100%;
+    overflow:auto;
+    background-color:#3a3026;
+}
+/*left column!*/
+#game_controls {
+    width:180px;/*must match game_container padding left!*/
+    margin-left:-100%;/*must be 100%*/
+    right:184px;/*must match left column width!+center bordree*/
+}
+
+/*right column!*/
+#game_info {
+    width:180px;/*must match game_container padding right!*/
+    margin-right:-184px;/*must match right column width+center border!*/
+    
+}
+
+
+/*all columns!*/
+#game_board, #game_controls, #game_info {
+    float:left;
+    position:relative;
+}
+
+
+
+	#game_header {
+		margin:0; padding:0;
+		}
+        
+        	#game_footer {
+		height:1.5em;
+		border-top:2px solid black;
+        clear:both;
+	background-color: #192614;
+		}
+        	.game_column-in {
+		margin:0; padding:1em;
+        
+        /*TODO: JIGGLE PADDING AND REMOVE THIS DIV*/
+		}
+
+        /*IE HACKSS!!!*/
+        * html #game_controls {
+            left:180px; /*RIGHT column width*/
+        }
+/*  end columns */
+
+a:hover {
+	color: #999;
+}
+img
+{
+	border-style: none;
+}
+
+.controls {
+	padding: 0px;
+	position: relative;
+	width: 140px;
+	
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #36502B;
+	left: 0px;
+	top: 5px;
+	border-bottom: 1px solid #000000;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #000000;
+	z-index: 1;
+}
+.netrisktitle {
+	position: absolute;
+	left: 0px;
+	width: 148px;
+	top: 1px;
+	color: #000000;
+	background-color: #9999AA;
+	border: 1px solid #000000;
+	text-align: center;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 16px;
+	font-weight: 900;
+	font-variant: small-caps;
+	padding: 2px;
+}
+.gametitle {
+	position: absolute;
+	right:0px;
+	top: 1px;
+	width: 148px;
+	text-align: center;
+	color: #000000;
+	background-color: #9999AA;
+	border: 1px solid #000000;
+	text-align: center;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 16px;
+	font-weight: 900;
+	font-variant: small-caps;
+}
+
+#bottomtitlemap {
+	position: absolute;
+	left: 540px; 
+	top: 20px;
+	width: auto; 
+	padding: 1px;
+	margin: auto;
+	background: transparent;
+	color: #000000;
+	text-align: center;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 16px;
+	font-weight: 900;
+	font-variant: small-caps;
+	z-index: 1;
+}
+.menu {
+	position: relative;
+	padding: 0px;
+	width: 100%;
+	height: 105px;
+	left:0px;
+	float:left;
+	text-align: center;
+	background-color:#36502B;
+}
+.details_top {
+	position: relative;
+	padding: 0px;
+	width: 140px;
+	top: 70px;
+	min-height: 100%;
+	float: right;
+	background-color:#36502B;
+}
+.details_bottom {
+	position: relative;
+	padding: 30px 3px 3px 3px;
+	width: 680px;
+	min-height: 180px;
+	float: right;
+	background-color: #36502B;
+
+}
+.center {
+	position: absolute;
+	left: 35%;
+	top: 50%;
+}
+.card {
+	position: absolute;
+	top: 20px;
+	width: 60px;
+	height: 70px;
+	padding: 5px;
+	border: 1px solid #000000;
+	font-size: 10px;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #000000;
+	background-color: #FFFFFF;
+	text-align: center;
+}
+.msg_ttl {
+	font-weight: 600;
+	font-variant: small-caps;
+	font-size: 12px;
+	text-align: center;
+}
+.msg_date {
+	font-size: 10px;
+}
+.msg_private {
+	font-size: 10px;
+	color: #555;
+}
+.msg_trade {
+	border: 1px dotted red;
+	font-size: 10px;
+	color: red;
+	background-color: #000;
+	font-weight: 600;
+.chat {
+	background-color:#fff;
+	color: #000;
+}
+#iframe {
+	background-color:#fff;
+	color:#000;
+}
+.small {
+	font-size:x-small;
+}
+
+.map_legend {
+	border:1px solid black;
+}
+
+
+
